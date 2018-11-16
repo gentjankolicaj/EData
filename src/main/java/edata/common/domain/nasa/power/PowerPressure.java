@@ -1,6 +1,7 @@
 package edata.common.domain.nasa.power;
 
 
+import com.sun.javafx.beans.IDProperty;
 import edata.common.domain.DataFormat;
 import edata.common.domain.PressureUnit;
 import edata.common.domain.User;
@@ -12,20 +13,17 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
-
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="nasaPowerTemperature")
-public class PowerTemperature {
-
+@Table(name="nasaPowerPressure")
+public class PowerPressure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+   @Column(name="id")
     private Long id;
 
 
@@ -58,4 +56,7 @@ public class PowerTemperature {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="rawDataFormat")
     private DataFormat rawDataFormat;
+
+
+
 }

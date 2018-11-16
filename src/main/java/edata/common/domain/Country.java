@@ -17,10 +17,13 @@ import javax.persistence.*;
 public class Country {
 
     @Id
+    @Column(name="countryName")
     private String countryName;
 
+    @Column(name="phonePrefix")
     private String phonePrefix;
 
+    @Column(name="isoCodes")
     private String isoCodes;
 
 

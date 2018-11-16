@@ -18,6 +18,7 @@ import javax.persistence.*;
 public class DataFormat {
 
     @Id
+    @Column(name="format")
     private String format;
 
 }

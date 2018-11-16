@@ -1,4 +1,5 @@
-package edata.common.domain;
+package edata.common.domain.nasa.power;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,20 +16,11 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="temperatureUnit")
-public class TemperatureUnit {
+@Table(name="nasaPowerIdentifier")
+public class Identifier {
 
     @Id
-    @Column(name="unitCode")
-    private String unitCode;
-
-    @Column(name="unitName")
-    private String unitName;
-
-
-    @Column(name="unitDescription")
-    private String unitDescription;
-
-
+    @Column(name="identifier")
+    private String identifier;
 
 }
