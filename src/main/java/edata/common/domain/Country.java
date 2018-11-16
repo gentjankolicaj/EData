@@ -8,16 +8,20 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="dataFormat")
-public class DataFormat {
+@Table(name="country")
+public class Country {
 
     @Id
-    private String format;
+    private String countryName;
+
+    private String phonePrefix;
+
+    private String isoCodes;
+
 
 }

@@ -14,8 +14,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="temperatureUnit")
-public class TemperatureUnit {
+@Table(name="pressureUnit")
+public class PressureUnit {
 
     @Id
     private String unitCode;
@@ -23,7 +23,4 @@ public class TemperatureUnit {
     private String unitName;
 
     private String unitDescription;
-
-
-
 }
