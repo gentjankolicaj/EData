@@ -86,7 +86,6 @@ public class PowerPressureRepositoryTest {
     @Test
     @Rollback
     public void createAll() throws Exception{
-
         Identifier singlePoint=new Identifier();
         singlePoint.setIdentifier("SINGLE_POINT");
 
@@ -151,7 +150,6 @@ public class PowerPressureRepositoryTest {
     @Test
     @Rollback
     public void readById()throws Exception {
-
         Long id=3L;
 
         Identifier singlePoint=new Identifier();
@@ -200,7 +198,6 @@ public class PowerPressureRepositoryTest {
     @Test
     @Rollback
     public void readAll() throws Exception{
-
         Long id=3L;
 
         Identifier singlePoint=new Identifier();
@@ -249,7 +246,6 @@ public class PowerPressureRepositoryTest {
     @Test
     @Rollback
     public void update() throws Exception{
-
         Long id=3L;
 
         Identifier singlePoint=new Identifier();
@@ -298,14 +294,11 @@ public class PowerPressureRepositoryTest {
 
         assertNotEquals(initialSave.getId(),secondarySave.getId());
         assertNotEquals(initialSave.getUrl(),secondarySave.getUrl());
-
     }
 
     @Test
     @Rollback
     public void delete() throws Exception{
-
-
         Long id=3L;
 
         Identifier singlePoint=new Identifier();
@@ -353,8 +346,6 @@ public class PowerPressureRepositoryTest {
     @Test
     @Rollback
     public void deleteAll() throws Exception{
-
-
         Identifier singlePoint=new Identifier();
         singlePoint.setIdentifier("SINGLE_POINT");
 
@@ -412,7 +403,6 @@ public class PowerPressureRepositoryTest {
         List<PowerPressure> list= Arrays.asList(powerPressure,powerPressure2,powerPressure3);
 
         powerPressureRepository.saveAll(list);
-
 
         powerPressureRepository.deleteAll();
 
