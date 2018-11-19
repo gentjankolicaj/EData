@@ -54,10 +54,10 @@ public class User {
     @Column(name="rights")
     private String rights;
 
-    @Column(name="createDate")
+    @Column(name="createdDate")
     private Date createdDate;
 
-    @Column(name="updateDate")
+    @Column(name="updatedDate")
     private Date updatedDate;
 
 
