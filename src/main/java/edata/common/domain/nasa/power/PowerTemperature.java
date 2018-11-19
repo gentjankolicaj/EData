@@ -3,6 +3,7 @@ package edata.common.domain.nasa.power;
 
 import edata.common.domain.DataFormat;
 import edata.common.domain.PressureUnit;
+import edata.common.domain.TemperatureUnit;
 import edata.common.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,7 +40,7 @@ public class PowerTemperature {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="unit")
-    private PressureUnit pressureUnit;
+    private TemperatureUnit temperatureUnit;
 
 
     @Column(name="startDate")
