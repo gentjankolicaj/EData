@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
 import java.util.Date;
-
 
 @Getter
 @Setter
@@ -15,49 +12,28 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserDTO {
 
-
-
     private Long id;
-
 
     private String firstName;
 
-
     private String lastName;
-
 
     private String password;
 
-
     private String email;
-
-
 
     private GenderDTO genderDTO;
 
-
-
     private Date birthday;
-
 
     private String birthplace;
 
-
     private CountryDTO countryDTO;
-
 
     private String rights;
 
-
     private Date createdDate;
 
-
     private Date updatedDate;
-
-
-
-
-
-
 
 }
