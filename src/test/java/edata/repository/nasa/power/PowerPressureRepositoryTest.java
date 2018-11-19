@@ -6,7 +6,6 @@ import edata.common.domain.PressureUnit;
 import edata.common.domain.User;
 import edata.common.domain.nasa.power.Identifier;
 import edata.common.domain.nasa.power.PowerPressure;
-import edata.common.dto.PressureUnitDTO;
 import edata.repository.PressureUnitRepository;
 import edata.repository.UserRepository;
 import org.apache.commons.collections4.IterableUtils;
@@ -28,19 +27,14 @@ import static org.junit.Assert.*;
 @DataJpaTest
 public class PowerPressureRepositoryTest {
 
-
     @Autowired
     private PowerPressureRepository powerPressureRepository;
-
 
     @Autowired
     private PressureUnitRepository pressureUnitRepository;
 
-
     @Autowired
     private UserRepository userRepository;
-
-
 
     @Test
     @Rollback
