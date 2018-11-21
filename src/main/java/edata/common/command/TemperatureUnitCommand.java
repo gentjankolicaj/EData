@@ -16,5 +16,4 @@ public class TemperatureUnitCommand {
     private String unitName;
 
     private String unitDescription;
-
 }

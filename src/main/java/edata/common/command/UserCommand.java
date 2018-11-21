@@ -38,5 +38,4 @@ public class UserCommand {
     private Date createdDate;
 
     private Date updatedDate;
-
 }

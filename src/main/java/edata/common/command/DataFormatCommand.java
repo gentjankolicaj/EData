@@ -13,5 +13,4 @@ import lombok.Setter;
 public class DataFormatCommand {
 
     private String format;
-
 }
