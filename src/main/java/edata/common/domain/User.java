@@ -21,11 +21,8 @@ public class User {
     @Column(name="id")
     private Long id;
 
-    @Column(name="firstName")
-    private String firstName;
-
-    @Column(name="lastName")
-    private String lastName;
+    @Column(name="username")
+    private String username;
 
     @Column(name="password")
     private String password;
@@ -33,10 +30,15 @@ public class User {
     @Column(name="email")
     private String email;
 
+    @Column(name="firstName")
+    private String firstName;
+
+    @Column(name="lastName")
+    private String lastName;
+
     @Enumerated(EnumType.STRING)
     @Column(name="gender")
     private Gender gender;
-
 
     @Column(name="birthday")
     private Date birthday;
@@ -48,7 +50,6 @@ public class User {
     @JoinColumn(name="country")
     private Country country;
 
-
     @Column(name="rights")
     private String rights;
 
@@ -57,6 +58,5 @@ public class User {
 
     @Column(name="updatedDate")
     private Date updatedDate;
-
 
 }

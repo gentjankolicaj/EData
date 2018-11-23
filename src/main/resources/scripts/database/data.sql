@@ -277,8 +277,7 @@ INSERT INTO nasa_power_identifier(identifier) VALUES('REGIONAL');
 INSERT INTO nasa_power_identifier(identifier) VALUES('GLOBAL');
 
 --Insert test users
-insert into users(id, first_name, last_name, password, email, gender, birthday, birthplace, country, rights, created_date, updated_date) values  (1,'jon','doe','password','jondoe@gmail.com','M','1990-09-01','Berlin,Germany','Germany','USER','1990-09-01','1990-09-01' );
-insert into users(id, first_name, last_name, password, email, gender, birthday, birthplace, country, rights, created_date, updated_date) values  (2,'jane','doe','password','janedoe@gmail.com','M','1990-09-01','Paris,France','France','USER','1990-09-01','1990-09-01' );
-
+insert into users(id,username,password, first_name, last_name, email, gender, birthday, birthplace, country, rights, created_date, updated_date) values  (1,'test user male','password','jon','doe','jondoe@gmail.com','M','1990-09-01','Berlin,Germany','Germany','USER','1990-09-01','1990-09-01' );
+insert into users(id,username,password, first_name, last_name,  email, gender, birthday, birthplace, country, rights, created_date, updated_date) values  (2,'test user female','password','jane','doe','janedoe@gmail.com','F','1990-09-01','Paris,France','France','USER','1990-09-01','1990-09-01' );
 
 
