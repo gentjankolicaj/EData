@@ -27,13 +27,13 @@ public class UserCommand {
 
     private String lastName;
 
-    private GenderDTO genderDTO;
+    private GenderCommand genderCommand;
 
     private Date birthday;
 
     private String birthplace;
 
-    private CountryDTO countryDTO;
+    private CountryCommand countryCommand;
 
     private String rights;
 
