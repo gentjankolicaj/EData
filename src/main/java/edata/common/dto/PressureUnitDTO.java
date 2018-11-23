@@ -11,12 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PressureUnitDTO {
 
-
     private String unitCode;
 
-
     private String unitName;
-
 
     private String unitDescription;
 }

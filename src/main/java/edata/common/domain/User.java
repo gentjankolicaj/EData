@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,7 +15,6 @@ import java.util.Date;
 @Entity
 @Table(name="users")
 public class User {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,11 +57,6 @@ public class User {
 
     @Column(name="updatedDate")
     private Date updatedDate;
-
-
-
-
-
 
 
 }

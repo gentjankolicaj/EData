@@ -25,10 +25,6 @@ public class TemperatureUnit {
     @Column(name="unitName")
     private String unitName;
 
-
     @Column(name="unitDescription")
     private String unitDescription;
-
-
-
 }

@@ -35,5 +35,4 @@ public class UserDTO {
     private Date createdDate;
 
     private Date updatedDate;
-
 }

@@ -1,8 +1,6 @@
 package edata.common.domain.nasa.power;
 
-
 import edata.common.domain.DataFormat;
-import edata.common.domain.PressureUnit;
 import edata.common.domain.TemperatureUnit;
 import edata.common.domain.User;
 import lombok.AllArgsConstructor;
@@ -13,8 +11,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
-
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,7 +18,6 @@ import java.util.Date;
 @Entity
 @Table(name="nasaPowerTemperature")
 public class PowerTemperature {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

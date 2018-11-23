@@ -1,7 +1,6 @@
 package edata.common.domain.nasa.power;
 
 
-import com.sun.javafx.beans.IDProperty;
 import edata.common.domain.DataFormat;
 import edata.common.domain.PressureUnit;
 import edata.common.domain.User;
@@ -56,7 +55,6 @@ public class PowerPressure {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="rawDataFormat")
     private DataFormat rawDataFormat;
-
 
 
 }

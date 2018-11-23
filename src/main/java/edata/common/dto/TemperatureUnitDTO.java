@@ -11,16 +11,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TemperatureUnitDTO {
 
-
     private String unitCode;
-
 
     private String unitName;
 
-
-
     private String unitDescription;
-
-
 
 }

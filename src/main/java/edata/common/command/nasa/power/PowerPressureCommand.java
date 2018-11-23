@@ -1,20 +1,13 @@
 package edata.common.command.nasa.power;
 
-
-import com.sun.javafx.beans.IDProperty;
-import edata.common.domain.DataFormat;
-import edata.common.domain.PressureUnit;
-import edata.common.domain.User;
-import edata.common.domain.nasa.power.Identifier;
-import edata.common.dto.DataFormatDTO;
-import edata.common.dto.PressureUnitDTO;
-import edata.common.dto.nasa.power.IdentifierDTO;
+import edata.common.command.DataFormatCommand;
+import edata.common.command.PressureUnitCommand;
+import edata.common.command.UserCommand;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -23,32 +16,22 @@ import java.util.Date;
 @AllArgsConstructor
 public class PowerPressureCommand {
 
-
     private Long id;
 
-
-    private User user;
-
+    private UserCommand userCommand;
 
     private Float value;
 
-
-    private PressureUnitDTO pressureUnitDTO;
-
+    private PressureUnitCommand pressureUnitCommand;
 
     private Date startDate;
-
 
     private Date endDate;
 
     private String url;
 
+    private IdentifierCommand identifierCommand;
 
-    private IdentifierDTO identifierDTO;
-
-
-    private DataFormatDTO rawDataFormatDTO;
-
-
+    private DataFormatCommand rawDataFormatCommand;
 
 }

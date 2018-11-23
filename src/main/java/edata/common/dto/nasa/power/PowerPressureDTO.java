@@ -1,11 +1,6 @@
 package edata.common.dto.nasa.power;
 
-
-import com.sun.javafx.beans.IDProperty;
-import edata.common.domain.DataFormat;
-import edata.common.domain.PressureUnit;
 import edata.common.domain.User;
-import edata.common.domain.nasa.power.Identifier;
 import edata.common.dto.DataFormatDTO;
 import edata.common.dto.PressureUnitDTO;
 import lombok.AllArgsConstructor;
@@ -22,32 +17,22 @@ import java.util.Date;
 @AllArgsConstructor
 public class PowerPressureDTO {
 
-
     private Long id;
-
 
     private User user;
 
-
     private Float value;
-
 
     private PressureUnitDTO pressureUnitDTO;
 
-
     private Date startDate;
-
 
     private Date endDate;
 
     private String url;
 
-
     private IdentifierDTO identifierDTO;
 
-
     private DataFormatDTO rawDataFormatDTO;
-
-
 
 }

@@ -1,6 +1,5 @@
 package edata.common.command;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +16,5 @@ public class CountryCommand {
     private String phonePrefix;
 
     private String isoCodes;
-
 
 }

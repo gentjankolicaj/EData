@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class IdentifierCommand {
 
-
     private String identifier;
 
 }

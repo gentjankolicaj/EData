@@ -12,14 +12,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CountryDTO {
 
-
     private String countryName;
-
 
     private String phonePrefix;
 
-
     private String isoCodes;
-
 
 }
