@@ -3,6 +3,7 @@ package edata.common.dto.nasa.power;
 import edata.common.domain.User;
 import edata.common.dto.DataFormatDTO;
 import edata.common.dto.PressureUnitDTO;
+import edata.common.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ public class PowerPressureDTO {
 
     private Long id;
 
-    private User user;
+    private UserDTO userDTO;
 
     private Float value;
 

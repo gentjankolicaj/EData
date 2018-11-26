@@ -24,7 +24,6 @@ public class PowerTemperature {
     @Column(name="id")
     private Long id;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="userId")
     private User user;
@@ -32,11 +31,9 @@ public class PowerTemperature {
     @Column(name="value")
     private Float value;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="unit")
     private TemperatureUnit temperatureUnit;
-
 
     @Column(name="startDate")
     private Date startDate;
@@ -49,7 +46,6 @@ public class PowerTemperature {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="identifier")
     private Identifier identifier;
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="rawDataFormat")

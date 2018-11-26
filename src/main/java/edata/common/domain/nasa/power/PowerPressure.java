@@ -22,9 +22,8 @@ public class PowerPressure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name="id")
+    @Column(name="id")
     private Long id;
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="userId")
@@ -33,11 +32,9 @@ public class PowerPressure {
     @Column(name="value")
     private Float value;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="unit")
     private PressureUnit pressureUnit;
-
 
     @Column(name="startDate")
     private Date startDate;
@@ -50,7 +47,6 @@ public class PowerPressure {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="identifier")
     private Identifier identifier;
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="rawDataFormat")

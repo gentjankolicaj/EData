@@ -22,7 +22,7 @@ public class PowerTemperatureCommand {
 
     private Float value;
 
-    private TemperatureUnitCommand TemperatureUnitCommand;
+    private TemperatureUnitCommand temperatureUnitCommand;
 
     private Date startDate;
 

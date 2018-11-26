@@ -4,6 +4,7 @@ import edata.common.domain.User;
 
 import edata.common.dto.DataFormatDTO;
 import edata.common.dto.TemperatureUnitDTO;
+import edata.common.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ public class PowerTemperatureDTO {
 
     private Long id;
 
-    private User user;
+    private UserDTO userDTO;
 
     private Float value;
 

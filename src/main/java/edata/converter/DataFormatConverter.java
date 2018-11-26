@@ -14,7 +14,6 @@ public class DataFormatConverter implements MyConverter<DataFormat, DataFormatDT
 
     @Override
     public DataFormatDTO sourceToDto(DataFormat source) {
-
         if (source == null) {
             return null;
         } else {
@@ -55,6 +54,5 @@ public class DataFormatConverter implements MyConverter<DataFormat, DataFormatDT
             dataFormat.setFormat(command.getFormat());
             return dataFormat;
         }
-
     }
 }
