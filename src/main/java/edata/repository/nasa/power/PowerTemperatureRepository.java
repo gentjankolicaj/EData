@@ -6,10 +6,12 @@ import edata.common.domain.User;
 import edata.common.domain.nasa.power.Identifier;
 import edata.common.domain.nasa.power.PowerTemperature;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public interface PowerTemperatureRepository extends CrudRepository<PowerTemperature,Long> {
 
     List<PowerTemperature> findPowerTemperaturesByValueLessThan(Float value);

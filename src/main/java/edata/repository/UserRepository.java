@@ -4,10 +4,12 @@ import edata.common.domain.Country;
 import edata.common.domain.Gender;
 import edata.common.domain.User;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface UserRepository extends CrudRepository<User,Long> {
 
     Optional<User> findUserByUsernameAndPassword(String username, String password);
