@@ -6,6 +6,9 @@ import edata.common.dto.TemperatureUnitDTO;
 import edata.converter.core.MyConverter;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class TemperatureUnitConverter implements MyConverter<TemperatureUnit, TemperatureUnitDTO, TemperatureUnitCommand> {
 
@@ -62,6 +65,32 @@ public class TemperatureUnitConverter implements MyConverter<TemperatureUnit, Te
             temperatureUnit.setUnitDescription(command.getUnitDescription());
             return temperatureUnit;
 
+        }
+    }
+
+    @Override
+    public List<TemperatureUnitDTO> sourceToDto(List<TemperatureUnit> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<TemperatureUnitDTO> tempList=new ArrayList<>(source.size());
+            for(TemperatureUnit temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return  tempList;
+        }
+    }
+
+    @Override
+    public List<TemperatureUnitCommand> sourceToCommand(List<TemperatureUnit> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<TemperatureUnitCommand> tempList=new ArrayList<>(source.size());
+            for(TemperatureUnit temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return  tempList;
         }
     }
 }

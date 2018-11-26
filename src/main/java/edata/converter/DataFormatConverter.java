@@ -6,6 +6,9 @@ import edata.common.dto.DataFormatDTO;
 import edata.converter.core.MyConverter;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class DataFormatConverter implements MyConverter<DataFormat, DataFormatDTO, DataFormatCommand> {
 
@@ -53,6 +56,32 @@ public class DataFormatConverter implements MyConverter<DataFormat, DataFormatDT
             DataFormat dataFormat = new DataFormat();
             dataFormat.setFormat(command.getFormat());
             return dataFormat;
+        }
+    }
+
+    @Override
+    public List<DataFormatDTO> sourceToDto(List<DataFormat> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<DataFormatDTO> tempList=new ArrayList<>(source.size());
+            for(DataFormat temp:source){
+                tempList.add(sourceToDto(temp));
+                            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public List<DataFormatCommand> sourceToCommand(List<DataFormat> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<DataFormatCommand> tempList=new ArrayList<>(source.size());
+            for(DataFormat temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return tempList;
         }
     }
 }

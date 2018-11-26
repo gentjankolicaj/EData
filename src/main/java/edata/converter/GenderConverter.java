@@ -6,6 +6,9 @@ import edata.common.dto.GenderDTO;
 import edata.converter.core.MyConverter;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class GenderConverter implements MyConverter<Gender, GenderDTO, GenderCommand> {
 
@@ -69,6 +72,32 @@ public class GenderConverter implements MyConverter<Gender, GenderDTO, GenderCom
             }else{
                 return Gender.O;
             }
+        }
+    }
+
+    @Override
+    public List<GenderDTO> sourceToDto(List<Gender> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<GenderDTO> tempList=new ArrayList<>(source.size());
+            for(Gender temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public List<GenderCommand> sourceToCommand(List<Gender> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<GenderCommand> tempList=new ArrayList<>(source.size());
+            for(Gender temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return tempList;
         }
     }
 

@@ -6,6 +6,9 @@ import edata.common.dto.nasa.power.IdentifierDTO;
 import edata.converter.core.MyNasaPowerConverter;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class IdentifierConverter implements MyNasaPowerConverter<Identifier, IdentifierDTO, IdentifierCommand> {
 
@@ -53,6 +56,32 @@ public class IdentifierConverter implements MyNasaPowerConverter<Identifier, Ide
             Identifier identifier=new Identifier();
             identifier.setIdentifier(command.getIdentifier());
             return identifier;
+        }
+    }
+
+    @Override
+    public List<IdentifierDTO> sourceToDto(List<Identifier> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<IdentifierDTO> tempList=new ArrayList<>(source.size());
+            for(Identifier temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public List<IdentifierCommand> sourceToCommand(List<Identifier> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<IdentifierCommand> tempList=new ArrayList<>(source.size());
+            for(Identifier temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return tempList;
         }
     }
 }

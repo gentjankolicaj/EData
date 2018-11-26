@@ -6,6 +6,9 @@ import edata.common.dto.CountryDTO;
 import edata.converter.core.MyConverter;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Component
 public class CountryConverter implements MyConverter<Country, CountryDTO, CountryCommand> {
@@ -66,5 +69,31 @@ public class CountryConverter implements MyConverter<Country, CountryDTO, Countr
             country.setPhonePrefix(command.getPhonePrefix());
             return country;
         }
+    }
+
+    @Override
+    public List<CountryDTO> sourceToDto(List<Country> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<CountryDTO> tempList=new ArrayList<>(source.size());
+            for(Country temp:source){
+                tempList.add(sourceToDto(temp));
+              }
+              return tempList;
+        }
+    }
+
+    @Override
+    public List<CountryCommand> sourceToCommand(List<Country> source) {
+       if(source==null||source.size()==0){
+           return null;
+       }else{
+           List<CountryCommand> tempList=new ArrayList<>(source.size());
+           for(Country temp:source){
+               tempList.add(sourceToCommand(temp));
+           }
+           return tempList;
+       }
     }
 }

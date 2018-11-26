@@ -6,6 +6,9 @@ import edata.common.dto.PressureUnitDTO;
 import edata.converter.core.MyConverter;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class PressureUnitConverter implements MyConverter<PressureUnit, PressureUnitDTO, PressureUnitCommand> {
 
@@ -62,6 +65,32 @@ public class PressureUnitConverter implements MyConverter<PressureUnit, Pressure
             pressureUnit.setUnitCode(command.getUnitCode());
             pressureUnit.setUnitDescription(command.getUnitDescription());
             return pressureUnit;
+        }
+    }
+
+    @Override
+    public List<PressureUnitDTO> sourceToDto(List<PressureUnit> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<PressureUnitDTO> tempList=new ArrayList<>(source.size());
+            for(PressureUnit temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public List<PressureUnitCommand> sourceToCommand(List<PressureUnit> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<PressureUnitCommand> tempList=new ArrayList<>(source.size());
+            for(PressureUnit temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return tempList;
         }
     }
 }

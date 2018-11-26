@@ -7,6 +7,9 @@ import edata.converter.core.MyConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class UserConverter  implements MyConverter <User, UserDTO, UserCommand> {
 
@@ -110,6 +113,33 @@ public class UserConverter  implements MyConverter <User, UserDTO, UserCommand> 
             user.setUpdatedDate(command.getUpdatedDate());
             user.setCreatedDate(command.getCreatedDate());
             return user;
+        }
+    }
+
+    @Override
+    public List<UserDTO> sourceToDto(List<User> source) {
+        if(source==null || source.size()==0){
+            return null;
+        }else{
+            List<UserDTO> tempList=new ArrayList<>(source.size());
+            for(User temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+
+    }
+
+    @Override
+    public List<UserCommand> sourceToCommand(List<User> source) {
+        if(source==null || source.size()==0){
+            return null;
+        }else{
+            List<UserCommand> tempList=new ArrayList<>(source.size());
+            for(User temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return tempList;
         }
     }
 }

@@ -10,6 +10,9 @@ import edata.converter.core.MyNasaPowerConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressure, PowerPressureDTO, PowerPressureCommand> {
 
@@ -99,6 +102,33 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
             powerPressure.setIdentifier(identifierConverter.commandToSource(command.getIdentifierCommand()));
             powerPressure.setRawDataFormat(dataFormatConverter.commandToSource(command.getRawDataFormatCommand()));
             return powerPressure;
+        }
+    }
+
+    @Override
+    public List<PowerPressureDTO> sourceToDto(List<PowerPressure> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<PowerPressureDTO> tempList=new ArrayList<>(source.size());
+            for(PowerPressure temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public List<PowerPressureCommand> sourceToCommand(List<PowerPressure> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<PowerPressureCommand> tempList=new ArrayList<>(source.size());
+            for(PowerPressure temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+
+            return tempList;
         }
     }
 }

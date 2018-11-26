@@ -1,5 +1,7 @@
 package edata.converter.core;
 
+import java.util.List;
+
 public interface MyNasaPowerConverter<S,D,C>{
 
 
@@ -10,5 +12,9 @@ public interface MyNasaPowerConverter<S,D,C>{
     S dtoToSource(D dto);
 
     S commandToSource(C command);
+
+    List<D> sourceToDto(List<S> source);
+
+    List<C> sourceToCommand(List<S> source);
 
 }

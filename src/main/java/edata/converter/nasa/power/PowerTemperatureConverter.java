@@ -2,10 +2,6 @@ package edata.converter.nasa.power;
 
 import edata.common.command.nasa.power.PowerTemperatureCommand;
 import edata.common.domain.nasa.power.PowerTemperature;
-import edata.common.dto.DataFormatDTO;
-import edata.common.dto.TemperatureUnitDTO;
-import edata.common.dto.UserDTO;
-import edata.common.dto.nasa.power.IdentifierDTO;
 import edata.common.dto.nasa.power.PowerTemperatureDTO;
 import edata.converter.DataFormatConverter;
 import edata.converter.TemperatureUnitConverter;
@@ -13,7 +9,9 @@ import edata.converter.UserConverter;
 import edata.converter.core.MyNasaPowerConverter;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Component
 public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemperature, PowerTemperatureDTO, PowerTemperatureCommand> {
@@ -104,6 +102,32 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
             powerTemperature.setIdentifier(identifierConverter.commandToSource(command.getIdentifierCommand()));
             powerTemperature.setRawDataFormat(dataFormatConverter.commandToSource(command.getRawDataFormatCommand()));
             return powerTemperature;
+        }
+    }
+
+    @Override
+    public List<PowerTemperatureDTO> sourceToDto(List<PowerTemperature> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<PowerTemperatureDTO> tempList=new ArrayList<>(source.size());
+            for(PowerTemperature temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public List<PowerTemperatureCommand> sourceToCommand(List<PowerTemperature> source) {
+        if(source==null||source.size()==0){
+            return null;
+        }else{
+            List<PowerTemperatureCommand> tempList=new ArrayList<>(source.size());
+            for(PowerTemperature temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return tempList;
         }
     }
 }
