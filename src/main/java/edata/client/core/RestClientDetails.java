@@ -13,5 +13,7 @@ public class RestClientDetails {
 
     private String provider;
     private String baseUrl;
+    private String apiKey;
+    private String user;
 
 }

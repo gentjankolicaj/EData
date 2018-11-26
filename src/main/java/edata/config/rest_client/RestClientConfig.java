@@ -22,6 +22,7 @@ public class RestClientConfig {
 
     @Bean
     public RestTemplate getRestTemplate(RestTemplateBuilder restTemplateBuilder){
+
         return restTemplateBuilder.build();
     }
 
