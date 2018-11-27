@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -17,6 +18,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class IdentifierCommand {
 
+    @NotNull
     private String identifier;
 
 }

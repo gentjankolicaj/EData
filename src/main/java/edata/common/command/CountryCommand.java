@@ -5,16 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CountryCommand {
 
+    @NotNull
     private String countryName;
 
+    @NotNull
     private String phonePrefix;
 
+    @NotNull
     private String isoCodes;
 
 }

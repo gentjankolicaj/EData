@@ -5,15 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class TemperatureUnitCommand {
 
+    @NotNull
     private String unitCode;
 
+    @NotNull
     private String unitName;
 
+    @NotNull
     private String unitDescription;
 }
