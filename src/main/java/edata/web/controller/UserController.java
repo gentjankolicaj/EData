@@ -4,8 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(ContactController.BASE_URL)
-public class ContactController {
+@RequestMapping(UserController.BASE_URL)
+public class UserController {
 
-    public static final String BASE_URL="/contact";
+    public static final String BASE_URL="/user";
+
 }
