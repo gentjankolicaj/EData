@@ -1,6 +1,5 @@
 package edata.api.v1.controller;
 
-import edata.common.domain.DataFormat;
 import edata.common.dto.DataFormatDTO;
 import edata.service.DataFormatService;
 import org.springframework.beans.factory.annotation.Autowired;

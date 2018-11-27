@@ -1,6 +1,5 @@
 package edata.api.v1.controller;
 
-import edata.common.domain.PressureUnit;
 import edata.common.dto.PressureUnitDTO;
 import edata.service.PressureUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
