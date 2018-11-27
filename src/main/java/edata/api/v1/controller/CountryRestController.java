@@ -5,7 +5,9 @@ import edata.common.dto.CountryDTO;
 import edata.exception.api.request.CountryBadRequestException;
 import edata.service.CountryService;
 import edata.validator.CountryRequestDataValidator;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,6 +42,13 @@ public class CountryRestController {
        }else{
            throw new CountryBadRequestException("Bad request :"+countryName);
        }
+    }
+
+
+
+    @RequestMapping("*")
+    public ResponseEntity<Object> otherNotMappedRequests(){
+        return new ResponseEntity<>("Wrong uri",new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
 }
