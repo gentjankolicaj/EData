@@ -4,6 +4,7 @@ import edata.common.command.nasa.power.IdentifierCommand;
 import edata.common.domain.nasa.power.Identifier;
 import edata.common.dto.nasa.power.IdentifierDTO;
 import edata.converter.nasa.power.IdentifierConverter;
+import edata.exception.resource.IdNullException;
 import edata.exception.resource.IdentifierNotFoundException;
 import edata.repository.nasa.power.IdentifierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,14 +48,22 @@ public class IdentifierServiceImpl implements IdentifierService {
 
     @Override
     public IdentifierDTO saveDTO(IdentifierDTO identifierDTO) {
-        Identifier savedObject=identifierRepository.save(identifierConverter.dtoToSource(identifierDTO));
-        return identifierConverter.sourceToDto(savedObject);
+        if(identifierDTO==null){
+                throw new IdentifierNotFoundException("Identifier not saved.Reference passed is null !!!");
+        }else {
+            Identifier savedObject = identifierRepository.save(identifierConverter.dtoToSource(identifierDTO));
+            return identifierConverter.sourceToDto(savedObject);
+        }
     }
 
     @Override
     public IdentifierCommand saveCommand(IdentifierCommand identifierCommand) {
-        Identifier savedObject=identifierRepository.save(identifierConverter.commandToSource(identifierCommand));
-        return identifierConverter.sourceToCommand(savedObject);
+        if(identifierCommand==null) {
+            throw new IdentifierNotFoundException("Identifier not saved.Reference passed is null !!!");
+        }else {
+            Identifier savedObject = identifierRepository.save(identifierConverter.commandToSource(identifierCommand));
+            return identifierConverter.sourceToCommand(savedObject);
+        }
     }
 
     @Override
@@ -92,29 +101,36 @@ public class IdentifierServiceImpl implements IdentifierService {
 
     @Override
     public IdentifierDTO getByIdDTO(String id) {
-        Optional<Identifier> optional=identifierRepository.findById(id);
-        if(!optional.isPresent()){
-            throw new IdentifierNotFoundException("Identifier with id "+id+" not found.");
-        }else{
-            return identifierConverter.sourceToDto(optional.get());
+        if(id==null){
+            throw new IdNullException("Identifier id is null.");
+        }else {
+            Optional<Identifier> optional = identifierRepository.findById(id);
+            if (!optional.isPresent()) {
+                throw new IdentifierNotFoundException("Identifier with id " + id + " not found.");
+            } else {
+                return identifierConverter.sourceToDto(optional.get());
+            }
         }
-
       }
 
     @Override
     public IdentifierCommand getByIdCommand(String id) {
-        Optional<Identifier> optional=identifierRepository.findById(id);
-        if(!optional.isPresent()){
-            throw new IdentifierNotFoundException("Identifier with id "+id+" not found.");
-        }else{
-            return identifierConverter.sourceToCommand(optional.get());
+        if(id==null){
+            throw new IdNullException("Identifier id is null.");
+        }else {
+            Optional<Identifier> optional = identifierRepository.findById(id);
+            if (!optional.isPresent()) {
+                throw new IdentifierNotFoundException("Identifier with id " + id + " not found.");
+            } else {
+                return identifierConverter.sourceToCommand(optional.get());
+            }
         }
     }
 
     @Override
     public void deleteDTO(IdentifierDTO identifierDTO) {
         if(identifierDTO==null){
-            throw new IdentifierNotFoundException("Identifier not found.Reference passed is null !!!");
+            throw new IdentifierNotFoundException("Identifier not deleted.Reference passed is null !!!");
 
         }else{
             Identifier identifier=identifierConverter.dtoToSource(identifierDTO);
@@ -125,7 +141,7 @@ public class IdentifierServiceImpl implements IdentifierService {
     @Override
     public void deleteCommand(IdentifierCommand identifierCommand) {
         if(identifierCommand==null){
-            throw new IdentifierNotFoundException("Identifier not found.Reference passed is null !!!");
+            throw new IdentifierNotFoundException("Identifier not deleted.Reference passed is null !!!");
 
         }else{
             Identifier identifier=identifierConverter.commandToSource(identifierCommand);
