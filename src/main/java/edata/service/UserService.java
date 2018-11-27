@@ -1,4 +1,27 @@
 package edata.service;
 
+import edata.common.command.UserCommand;
+import edata.common.dto.UserDTO;
+
+import java.util.List;
+
 public interface UserService {
+
+    List<UserDTO> getAllDTO();
+    List<UserCommand> getAllCommand();
+
+    UserDTO saveDTO(UserDTO userDTO);
+    UserCommand saveCommand(UserCommand userCommand);
+
+    UserDTO updateDTO(UserDTO userDTO);
+    UserCommand updateCommand(UserCommand userCommand);
+
+
+    UserDTO getByIdDTO(Long id);
+    UserCommand  getByIdCommand(Long id);
+
+    void deleteDTO(UserDTO userDTO);
+    void deleteCommand(UserCommand userCommand);
+
+
 }
