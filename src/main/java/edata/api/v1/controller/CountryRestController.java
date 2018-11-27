@@ -34,9 +34,9 @@ public class CountryRestController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("{countryName}")
-    public List<CountryDTO> getCountriesByName(@PathVariable("countryName") String countryName){
+    public CountryDTO getCountryById(@PathVariable("countryName") String countryName){
        if(requestDataValidator.validateFirst(countryName)){
-           return countryService.getByCountryNameDTO(countryName);
+           return countryService.getByIdDTO(countryName);
        }else{
            throw new CountryBadRequestException("Bad request :"+countryName);
        }
