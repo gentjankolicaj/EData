@@ -84,4 +84,30 @@ public class IdentifierConverter implements MyNasaPowerConverter<Identifier, Ide
             return tempList;
         }
     }
+
+    @Override
+    public List<IdentifierDTO> sourceToDto(Iterable<Identifier> source) {
+        if(source==null){
+            return null;
+        }else{
+            List<IdentifierDTO> tempList=new ArrayList<>();
+            for(Identifier temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public List<IdentifierCommand> sourceToCommand(Iterable<Identifier> source) {
+        if(source==null){
+            return null;
+        }else{
+            List<IdentifierCommand> tempList=new ArrayList<>();
+            for(Identifier temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return tempList;
+        }
+    }
 }
