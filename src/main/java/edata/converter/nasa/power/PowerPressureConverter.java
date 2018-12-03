@@ -131,4 +131,32 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
             return tempList;
         }
     }
+
+    @Override
+    public Iterable<PowerPressureDTO> sourceToDto(Iterable<PowerPressure> source) {
+        if(source==null){
+            return null;
+        }else{
+            List<PowerPressureDTO> tempList=new ArrayList<>();
+            for(PowerPressure temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public Iterable<PowerPressureCommand> sourceToCommand(Iterable<PowerPressure> source) {
+        if(source==null){
+            return null;
+        }else{
+            List<PowerPressureCommand> tempList=new ArrayList<>();
+            for(PowerPressure temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+
+            return tempList;
+        }
+    }
+
 }

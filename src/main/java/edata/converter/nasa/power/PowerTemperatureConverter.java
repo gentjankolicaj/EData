@@ -130,4 +130,31 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
             return tempList;
         }
     }
+
+    @Override
+    public Iterable<PowerTemperatureDTO> sourceToDto(Iterable<PowerTemperature> source) {
+        if(source==null){
+            return null;
+        }else{
+            List<PowerTemperatureDTO> tempList=new ArrayList<>();
+            for(PowerTemperature temp:source){
+                tempList.add(sourceToDto(temp));
+            }
+            return tempList;
+        }
+    }
+
+    @Override
+    public Iterable<PowerTemperatureCommand> sourceToCommand(Iterable<PowerTemperature> source) {
+        if(source==null){
+            return null;
+        }else{
+            List<PowerTemperatureCommand> tempList=new ArrayList<>();
+            for(PowerTemperature temp:source){
+                tempList.add(sourceToCommand(temp));
+            }
+            return tempList;
+        }
+    }
+
 }
