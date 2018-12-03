@@ -1,6 +1,5 @@
 package edata.service;
 
-import edata.api.v1.controller.UserRestController;
 import edata.common.command.UserCommand;
 import edata.common.domain.User;
 import edata.common.dto.UserDTO;
@@ -152,6 +151,20 @@ public class UserServiceImpl implements UserService {
                 throw new UserNotFoundException("User with id "+id+" not found.");
             }else{
                 return userConverter.sourceToCommand(optional.get());
+            }
+        }
+    }
+
+    @Override
+    public User getById(Long id) {
+        if(id==null){
+            throw new NullIdException("User id is null.");
+        }else{
+            Optional<User> optional=userRepository.findById(id);
+            if(!optional.isPresent()){
+                throw new UserNotFoundException("User with id "+id+" not found.");
+            }else{
+                return optional.get();
             }
         }
     }

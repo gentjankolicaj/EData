@@ -1,6 +1,7 @@
 package edata.service;
 
 import edata.common.command.UserCommand;
+import edata.common.domain.User;
 import edata.common.dto.UserDTO;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public interface UserService {
 
     UserDTO getByIdDTO(Long id);
     UserCommand  getByIdCommand(Long id);
+    User getById(Long id);
 
     void deleteDTO(UserDTO userDTO);
     void deleteCommand(UserCommand userCommand);
