@@ -133,7 +133,7 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
     }
 
     @Override
-    public Iterable<PowerPressureDTO> sourceToDto(Iterable<PowerPressure> source) {
+    public List<PowerPressureDTO> sourceToDto(Iterable<PowerPressure> source) {
         if(source==null){
             return null;
         }else{
@@ -146,7 +146,7 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
     }
 
     @Override
-    public Iterable<PowerPressureCommand> sourceToCommand(Iterable<PowerPressure> source) {
+    public List<PowerPressureCommand> sourceToCommand(Iterable<PowerPressure> source) {
         if(source==null){
             return null;
         }else{

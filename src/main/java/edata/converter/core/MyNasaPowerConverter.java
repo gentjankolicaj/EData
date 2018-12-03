@@ -17,8 +17,8 @@ public interface MyNasaPowerConverter<S,D,C>{
 
     List<C> sourceToCommand(List<S> source);
 
-    Iterable<D> sourceToDto(Iterable<S> source);
+    List<D> sourceToDto(Iterable<S> source);
 
-    Iterable<C> sourceToCommand(Iterable<S> source);
+    List<C> sourceToCommand(Iterable<S> source);
 
 }

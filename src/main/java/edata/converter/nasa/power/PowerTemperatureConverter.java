@@ -132,7 +132,7 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
     }
 
     @Override
-    public Iterable<PowerTemperatureDTO> sourceToDto(Iterable<PowerTemperature> source) {
+    public List<PowerTemperatureDTO> sourceToDto(Iterable<PowerTemperature> source) {
         if(source==null){
             return null;
         }else{
@@ -145,7 +145,7 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
     }
 
     @Override
-    public Iterable<PowerTemperatureCommand> sourceToCommand(Iterable<PowerTemperature> source) {
+    public List<PowerTemperatureCommand> sourceToCommand(Iterable<PowerTemperature> source) {
         if(source==null){
             return null;
         }else{
