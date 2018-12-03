@@ -25,7 +25,7 @@ public class CountryRequestDataValidator implements MyRequestDataValidator<Strin
     public boolean validateSecond(List<String> requestData) {
         boolean status=true;
         for(String data:requestData){
-        if(requestData==null||requestData.equals(""))
+        if(data==null||data.equals(""))
            status=false;
 
         }
