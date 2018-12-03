@@ -39,8 +39,7 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
             powerPressureDTO.setUserDTO(userConverter.sourceToDto(source.getUser()));
             powerPressureDTO.setValue(source.getValue());
             powerPressureDTO.setPressureUnitDTO(pressureUnitConverter.sourceToDto(source.getPressureUnit()));
-            powerPressureDTO.setStartDate(source.getStartDate());
-            powerPressureDTO.setEndDate(source.getEndDate());
+            powerPressureDTO.setDate(source.getDate());
             powerPressureDTO.setUrl(source.getUrl());
             powerPressureDTO.setIdentifierDTO(identifierConverter.sourceToDto(source.getIdentifier()));
             powerPressureDTO.setRawDataFormatDTO(dataFormatConverter.sourceToDto(source.getRawDataFormat()));
@@ -58,8 +57,7 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
             powerPressureCommand.setUserCommand(userConverter.sourceToCommand(source.getUser()));
             powerPressureCommand.setValue(source.getValue());
             powerPressureCommand.setPressureUnitCommand(pressureUnitConverter.sourceToCommand(source.getPressureUnit()));
-            powerPressureCommand.setStartDate(source.getStartDate());
-            powerPressureCommand.setEndDate(source.getEndDate());
+            powerPressureCommand.setDate(source.getDate());
             powerPressureCommand.setUrl(source.getUrl());
             powerPressureCommand.setIdentifierCommand(identifierConverter.sourceToCommand(source.getIdentifier()));
             powerPressureCommand.setRawDataFormatCommand(dataFormatConverter.sourceToCommand(source.getRawDataFormat()));
@@ -77,8 +75,7 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
             powerPressure.setUser(userConverter.dtoToSource(dto.getUserDTO()));
             powerPressure.setValue(dto.getValue());
             powerPressure.setPressureUnit(pressureUnitConverter.dtoToSource(dto.getPressureUnitDTO()));
-            powerPressure.setStartDate(dto.getStartDate());
-            powerPressure.setEndDate(dto.getEndDate());
+            powerPressure.setDate(dto.getDate());
             powerPressure.setUrl(dto.getUrl());
             powerPressure.setIdentifier(identifierConverter.dtoToSource(dto.getIdentifierDTO()));
             powerPressure.setRawDataFormat(dataFormatConverter.dtoToSource(dto.getRawDataFormatDTO()));
@@ -96,8 +93,7 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
             powerPressure.setUser(userConverter.commandToSource(command.getUserCommand()));
             powerPressure.setValue(command.getValue());
             powerPressure.setPressureUnit(pressureUnitConverter.commandToSource(command.getPressureUnitCommand()));
-            powerPressure.setStartDate(command.getStartDate());
-            powerPressure.setEndDate(command.getEndDate());
+            powerPressure.setDate(command.getDate());
             powerPressure.setUrl(command.getUrl());
             powerPressure.setIdentifier(identifierConverter.commandToSource(command.getIdentifierCommand()));
             powerPressure.setRawDataFormat(dataFormatConverter.commandToSource(command.getRawDataFormatCommand()));

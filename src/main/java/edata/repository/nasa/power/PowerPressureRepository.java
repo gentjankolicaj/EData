@@ -19,8 +19,6 @@ public interface PowerPressureRepository extends CrudRepository<PowerPressure,Lo
     List<PowerPressure> findPowerPressuresByPressureUnit(PressureUnit pressureUnit);
 
     List<PowerPressure>  findPowerPressuresByUser(User user);
-    List<PowerPressure> findPowerPressuresByStartDateAfter(Date startDate);
-    List<PowerPressure> findPowerPressuresByEndDateBefore(Date endDate);
     List<PowerPressure> findPowerPressuresByUrlLike(String url);
     List<PowerPressure> findPowerPressuresByIdentifier(Identifier identifier);
     List<PowerPressure> findPowerPressuresByRawDataFormat(DataFormat dataFormat);

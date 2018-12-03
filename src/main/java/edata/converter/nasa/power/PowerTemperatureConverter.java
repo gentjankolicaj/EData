@@ -38,8 +38,7 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
             powerTemperatureDTO.setUserDTO(userConverter.sourceToDto(source.getUser()));
             powerTemperatureDTO.setValue(source.getValue());
             powerTemperatureDTO.setTemperatureUnitDTO(temperatureUnitConverter.sourceToDto(source.getTemperatureUnit()));
-            powerTemperatureDTO.setStartDate(source.getStartDate());
-            powerTemperatureDTO.setEndDate(source.getEndDate());
+            powerTemperatureDTO.setDate(source.getDate());
             powerTemperatureDTO.setUrl(source.getUrl());
             powerTemperatureDTO.setIdentifierDTO(identifierConverter.sourceToDto(source.getIdentifier()));
             powerTemperatureDTO.setRawDataFormatDTO(dataFormatConverter.sourceToDto(source.getRawDataFormat()));
@@ -57,8 +56,7 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
             powerTemperatureCommand.setUserCommand(userConverter.sourceToCommand(source.getUser()));
             powerTemperatureCommand.setValue(source.getValue());
             powerTemperatureCommand.setTemperatureUnitCommand(temperatureUnitConverter.sourceToCommand(source.getTemperatureUnit()));
-            powerTemperatureCommand.setStartDate(source.getStartDate());
-            powerTemperatureCommand.setEndDate(source.getEndDate());
+            powerTemperatureCommand.setDate(source.getDate());
             powerTemperatureCommand.setUrl(source.getUrl());
             powerTemperatureCommand.setIdentifierCommand(identifierConverter.sourceToCommand(source.getIdentifier()));
             powerTemperatureCommand.setRawDataFormatCommand(dataFormatConverter.sourceToCommand(source.getRawDataFormat()));
@@ -77,8 +75,7 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
            powerTemperature.setUser(userConverter.dtoToSource(dto.getUserDTO()));
            powerTemperature.setValue(dto.getValue());
            powerTemperature.setTemperatureUnit(temperatureUnitConverter.dtoToSource(dto.getTemperatureUnitDTO()));
-           powerTemperature.setStartDate(dto.getStartDate());
-           powerTemperature.setEndDate(dto.getEndDate());
+           powerTemperature.setDate(dto.getDate());
            powerTemperature.setUrl(dto.getUrl());
            powerTemperature.setIdentifier(identifierConverter.dtoToSource(dto.getIdentifierDTO()));
            powerTemperature.setRawDataFormat(dataFormatConverter.dtoToSource(dto.getRawDataFormatDTO()));
@@ -96,8 +93,7 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
             powerTemperature.setUser(userConverter.commandToSource(command.getUserCommand()));
             powerTemperature.setValue(command.getValue());
             powerTemperature.setTemperatureUnit(temperatureUnitConverter.commandToSource(command.getTemperatureUnitCommand()));
-            powerTemperature.setStartDate(command.getStartDate());
-            powerTemperature.setEndDate(command.getEndDate());
+            powerTemperature.setDate(command.getDate());
             powerTemperature.setUrl(command.getUrl());
             powerTemperature.setIdentifier(identifierConverter.commandToSource(command.getIdentifierCommand()));
             powerTemperature.setRawDataFormat(dataFormatConverter.commandToSource(command.getRawDataFormatCommand()));

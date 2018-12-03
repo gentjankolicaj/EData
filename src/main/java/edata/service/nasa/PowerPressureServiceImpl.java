@@ -95,8 +95,7 @@ public class PowerPressureServiceImpl implements PowerPressureService {
                 actual.setUser(newPowerPressure.getUser());
                 actual.setValue(newPowerPressure.getValue());
                 actual.setPressureUnit(newPowerPressure.getPressureUnit());
-                actual.setStartDate(newPowerPressure.getStartDate());
-                actual.setEndDate(newPowerPressure.getEndDate());
+                actual.setDate(newPowerPressure.getDate());
                 actual.setUrl(newPowerPressure.getUrl());
                 actual.setIdentifier(newPowerPressure.getIdentifier());
                 actual.setRawDataFormat(newPowerPressure.getRawDataFormat());
@@ -120,8 +119,7 @@ public class PowerPressureServiceImpl implements PowerPressureService {
                 actual.setUser(newPowerPressure.getUser());
                 actual.setValue(newPowerPressure.getValue());
                 actual.setPressureUnit(newPowerPressure.getPressureUnit());
-                actual.setStartDate(newPowerPressure.getStartDate());
-                actual.setEndDate(newPowerPressure.getEndDate());
+                actual.setDate(newPowerPressure.getDate());
                 actual.setUrl(newPowerPressure.getUrl());
                 actual.setIdentifier(newPowerPressure.getIdentifier());
                 actual.setRawDataFormat(newPowerPressure.getRawDataFormat());

@@ -93,8 +93,7 @@ public class PowerTemperatureServiceImpl implements PowerTemperatureService {
                 actual.setUser(newPowerTemperature.getUser());
                 actual.setValue(newPowerTemperature.getValue());
                 actual.setTemperatureUnit(newPowerTemperature.getTemperatureUnit());
-                actual.setStartDate(newPowerTemperature.getStartDate());
-                actual.setEndDate(newPowerTemperature.getEndDate());
+                actual.setDate(newPowerTemperature.getDate());
                 actual.setUrl(newPowerTemperature.getUrl());
                 actual.setIdentifier(newPowerTemperature.getIdentifier());
                 actual.setRawDataFormat(newPowerTemperature.getRawDataFormat());
@@ -118,8 +117,7 @@ public class PowerTemperatureServiceImpl implements PowerTemperatureService {
                 actual.setUser(newPowerTemperature.getUser());
                 actual.setValue(newPowerTemperature.getValue());
                 actual.setTemperatureUnit(newPowerTemperature.getTemperatureUnit());
-                actual.setStartDate(newPowerTemperature.getStartDate());
-                actual.setEndDate(newPowerTemperature.getEndDate());
+                actual.setDate(newPowerTemperature.getDate());
                 actual.setUrl(newPowerTemperature.getUrl());
                 actual.setIdentifier(newPowerTemperature.getIdentifier());
                 actual.setRawDataFormat(newPowerTemperature.getRawDataFormat());

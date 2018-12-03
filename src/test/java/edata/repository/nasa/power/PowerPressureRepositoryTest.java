@@ -63,8 +63,7 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure=new PowerPressure();
         powerPressure.setValue(12f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("https://localhost.com/");
@@ -104,8 +103,8 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure=new PowerPressure();
         powerPressure.setValue(12f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
+
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("https://localhost.com/");
@@ -115,8 +114,7 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure2=new PowerPressure();
         powerPressure.setValue(132f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("2https://localhost.com/");
@@ -126,8 +124,7 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure3=new PowerPressure();
         powerPressure.setValue(122f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("3333https://localhost.com/");
@@ -171,8 +168,8 @@ public class PowerPressureRepositoryTest {
         powerPressure.setId(id);
         powerPressure.setValue(12f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
+
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("https://localhost.com/");
@@ -219,8 +216,8 @@ public class PowerPressureRepositoryTest {
         powerPressure.setId(id);
         powerPressure.setValue(12f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
+
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("https://localhost.com/");
@@ -267,8 +264,8 @@ public class PowerPressureRepositoryTest {
         powerPressure.setId(id);
         powerPressure.setValue(12f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
+
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("https://localhost.com/");
@@ -279,8 +276,8 @@ public class PowerPressureRepositoryTest {
 
         powerPressure.setUser(user);
         powerPressure.setValue(123f);
-        powerPressure.setStartDate(new Date());
-        powerPressure.setEndDate(new Date());
+
+        powerPressure.setDate(new Date());
         powerPressure.setRawDataFormat(new DataFormat("txt"));
         powerPressure.setUrl("https://localhost.org/");
 
@@ -320,8 +317,8 @@ public class PowerPressureRepositoryTest {
         powerPressure.setId(id);
         powerPressure.setValue(12f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
+
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("https://localhost.com/");
@@ -364,8 +361,8 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure=new PowerPressure();
         powerPressure.setValue(12f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
+
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("https://localhost.com/");
@@ -375,8 +372,7 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure2=new PowerPressure();
         powerPressure.setValue(132f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("2https://localhost.com/");
@@ -386,8 +382,7 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure3=new PowerPressure();
         powerPressure.setValue(122f);
         powerPressure.setIdentifier(singlePoint);
-        powerPressure.setEndDate(new Date());
-        powerPressure.setStartDate(new Date());
+        powerPressure.setDate(new Date());
         powerPressure.setPressureUnit(pressureUnit);
         powerPressure.setRawDataFormat(new DataFormat("json"));
         powerPressure.setUrl("3333https://localhost.com/");

@@ -19,8 +19,6 @@ public interface PowerTemperatureRepository extends CrudRepository<PowerTemperat
     List<PowerTemperature> findPowerTemperaturesByTemperatureUnit(TemperatureUnit temperatureUnit);
 
     List<PowerTemperature> findPowerTemperaturesByUser(User user);
-    List<PowerTemperature> findPowerTemperaturesByStartDateAfter(Date startDate);
-    List<PowerTemperature> findPowerTemperaturesByEndDateBefore(Date endDate);
     List<PowerTemperature> findPowerTemperaturesByUrlLike(String url);
     List<PowerTemperature> findPowerTemperaturesByIdentifier(Identifier identifier);
     List<PowerTemperature> findPowerTemperaturesByRawDataFormat(DataFormat dataFormat);
