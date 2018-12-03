@@ -21,4 +21,15 @@ public interface PowerTemperatureService {
 
     void deleteDTO(PowerTemperatureDTO powerTemperatureDTO);
     void deleteCommand(PowerTemperatureCommand powerTemperatureCommand);
+
+    List<PowerTemperatureDTO> retrieveDTO(Long userId,String identifier, String dataParameters,
+                                         String startDate, String endDate,
+                                         String userCommunity, String tempAverage,
+                                         String outputFormat, String lat, String lon, String bbox);
+    List<PowerTemperatureCommand> retrieveCommand(Long userId,String identifier, String dataParameters,
+                                                 String startDate, String endDate,
+                                                 String userCommunity, String tempAverage,
+                                                 String outputFormat, String lat, String lon, String bbox);
+
+
 }
