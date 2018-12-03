@@ -26,9 +26,7 @@ public class PowerPressureDTO {
 
     private PressureUnitDTO pressureUnitDTO;
 
-    private Date startDate;
-
-    private Date endDate;
+    private Date date;
 
     private String url;
 

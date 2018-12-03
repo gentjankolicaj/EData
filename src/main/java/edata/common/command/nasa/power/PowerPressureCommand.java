@@ -30,10 +30,7 @@ public class PowerPressureCommand {
     private PressureUnitCommand pressureUnitCommand;
 
     @NotNull
-    private Date startDate;
-
-    @NotNull
-    private Date endDate;
+    private Date date;
 
     @NotNull
     private String url;

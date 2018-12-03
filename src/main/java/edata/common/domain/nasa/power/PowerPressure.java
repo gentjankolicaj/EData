@@ -36,12 +36,10 @@ public class PowerPressure {
     @JoinColumn(name="unit")
     private PressureUnit pressureUnit;
 
-    @Column(name="startDate")
-    private Date startDate;
+    @Column(name="date")
+    private Date date;
 
-    @Column(name="endDate")
-    private Date endDate;
-
+    @Column(name="url")
     private String url;
 
     @ManyToOne(fetch = FetchType.EAGER)

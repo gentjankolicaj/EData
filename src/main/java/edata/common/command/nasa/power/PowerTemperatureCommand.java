@@ -31,10 +31,7 @@ public class PowerTemperatureCommand {
     private TemperatureUnitCommand temperatureUnitCommand;
 
     @NotNull
-    private Date startDate;
-
-    @NotNull
-    private Date endDate;
+    private Date date;
 
     @NotNull
     private String url;

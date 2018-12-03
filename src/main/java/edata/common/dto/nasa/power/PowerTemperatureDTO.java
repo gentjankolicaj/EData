@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import java.util.Date;
 
 @Getter
@@ -26,9 +27,7 @@ public class PowerTemperatureDTO {
 
     private TemperatureUnitDTO temperatureUnitDTO;
 
-    private Date startDate;
-
-    private Date endDate;
+    private Date date;
 
     private String url;
 
