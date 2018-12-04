@@ -1,7 +1,5 @@
 package edata.common.dto;
 
-
-import edata.common.domain.Language;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,14 +11,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CountryDTO {
+public class LanguageDTO {
 
-    private String countryName;
+    private String language;
 
-    private String phonePrefix;
-
-    private String isoCodes;
-
-    private List<LanguageDTO> languagesDTO;
-
+    private List<CountryDTO> countriesDTO;
 }

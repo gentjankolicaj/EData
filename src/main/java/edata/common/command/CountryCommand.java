@@ -1,11 +1,13 @@
 package edata.common.command;
 
+import edata.common.domain.Language;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,5 +23,7 @@ public class CountryCommand {
 
     @NotNull
     private String isoCodes;
+
+    private List<LanguageCommand> languagesCommand;
 
 }
