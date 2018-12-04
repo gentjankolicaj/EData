@@ -1,23 +1,23 @@
-package edata.web.nasa;
+package edata.web.controller.nasa;
 
 import edata.service.InformationService;
-import edata.service.nasa.PowerPressureService;
+import edata.service.nasa.PowerTemperatureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(PressureController.BASE_URL)
-public class PressureController {
+@RequestMapping(TemperatureController.BASE_URL)
+public class TemperatureController {
 
     public static final String BASE_URL="/nasa/temperature/";
 
-    private final PowerPressureService powerPressureService;
+    private final PowerTemperatureService powerTemperatureService;
     private final InformationService informationService;
 
     @Autowired
-    public PressureController(PowerPressureService powerPressureService, InformationService informationService) {
-        this.powerPressureService = powerPressureService;
+    public TemperatureController(PowerTemperatureService powerTemperatureService, InformationService informationService) {
+        this.powerTemperatureService = powerTemperatureService;
         this.informationService = informationService;
     }
 }
