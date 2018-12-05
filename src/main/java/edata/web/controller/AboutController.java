@@ -17,4 +17,16 @@ public class AboutController {
     public AboutController(InformationService informationService) {
         this.informationService = informationService;
     }
+
+    @RequestMapping("")
+    public String showAbout(){
+
+        return "core/about";
+    }
+
+    @RequestMapping("/")
+    public String showAbout2(){
+
+        return "core/about";
+    }
 }

@@ -17,4 +17,15 @@ public class HelpController {
     public HelpController(InformationService informationService) {
         this.informationService = informationService;
     }
+
+    @RequestMapping("")
+    public String showHelp(){
+
+        return "core/help";
+    }
+    @RequestMapping("/")
+    public String showHelp2(){
+
+        return "core/help";
+    }
 }

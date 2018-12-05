@@ -19,4 +19,16 @@ public class ContactController {
         this.informationService = informationService;
     }
 
+    @RequestMapping("")
+    public String showContact(){
+
+        return "core/contact";
+    }
+
+    @RequestMapping("/")
+    public String showContact2(){
+
+        return "core/contact";
+    }
+
 }

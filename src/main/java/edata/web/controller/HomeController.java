@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(HomeController.BASE_URL)
 public class HomeController {
 
-    public static final String BASE_URL="/home";
+    public static final String BASE_URL="/";
 
     private final InformationService informationService;
 
@@ -18,5 +18,25 @@ public class HomeController {
     public HomeController(InformationService informationService) {
         this.informationService = informationService;
     }
+
+    @RequestMapping("")
+    public String showRoot(){
+
+        return "core/index";
+    }
+
+
+    @RequestMapping("home")
+    public String showIndex(){
+
+        return "core/index";
+    }
+
+    @RequestMapping("home/")
+    public String showIndex2(){
+
+        return "core/index";
+    }
+
 
 }
