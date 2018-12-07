@@ -188,4 +188,34 @@ public class UserServiceImpl implements UserService {
             userRepository.delete(user);
         }
     }
+
+    @Override
+    public UserDTO getByEmailAndPasswordDTO(String email, String password) {
+        if(email==null||password==null){
+            throw new NullIdException("User email or password null");
+        }else{
+            Optional<User> optional=userRepository.findUserByEmailAndPassword(email,password);
+            if(!optional.isPresent()){
+                throw new UserNotFoundException("User with email "+email+" not found.");
+            }else{
+                return userConverter.sourceToDto(optional.get());
+            }
+        }
+    }
+
+    @Override
+    public UserCommand getByEmailAndPasswordCommand(String email, String password) {
+        if(email==null||password==null){
+            throw new NullIdException("User email or password null");
+        }else{
+            Optional<User> optional=userRepository.findUserByEmailAndPassword(email,password);
+            if(!optional.isPresent()){
+                throw new UserNotFoundException("User with email "+email+" not found.");
+            }else{
+                return userConverter.sourceToCommand(optional.get());
+            }
+        }
+    }
+
+
 }

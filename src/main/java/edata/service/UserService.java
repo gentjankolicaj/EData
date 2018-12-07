@@ -26,4 +26,8 @@ public interface UserService {
     void deleteCommand(UserCommand userCommand);
 
 
+    UserDTO getByEmailAndPasswordDTO(String email,String password);
+    UserCommand  getByEmailAndPasswordCommand(String email,String password);
+
+
 }
