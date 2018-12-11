@@ -29,5 +29,7 @@ public interface UserService {
     UserDTO getByEmailAndPasswordDTO(String email,String password);
     UserCommand  getByEmailAndPasswordCommand(String email,String password);
 
+    User getByUsername(String username);
+
 
 }

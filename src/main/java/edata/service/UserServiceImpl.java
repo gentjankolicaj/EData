@@ -217,5 +217,19 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public User getByUsername(String username) {
+       if(username==null){
+              throw new NullReferenceException("Username is null.Reference passed is null !!!.");
+         }else{
+           Optional<User> optional=userRepository.findUserByUsername(username);
+           if(!optional.isPresent()){
+               throw new UserNotFoundException("User with username "+username+" not found.");
+           }else{
+               return optional.get();
+           }
+       }
+    }
+
 
 }
