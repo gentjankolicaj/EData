@@ -1,5 +1,6 @@
 package edata.common.command;
 
+import edata.common.domain.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,6 +18,9 @@ public class UserCommand {
 
     @NotNull
     private Long id;
+
+    @NotNull
+    private List<RoleCommand> rolesCommand;
 
     @NotNull
     private String username;

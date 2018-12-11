@@ -15,14 +15,14 @@ public class UserConverter  implements MyConverter <User, UserDTO, UserCommand> 
 
     private final CountryConverter countryConverter;
     private final GenderConverter genderConverter;
-
+    private final RoleConverter roleConverter;
 
     @Autowired
-    public UserConverter(CountryConverter countryConverter,GenderConverter genderConverter) {
-        this.countryConverter=countryConverter;
-        this.genderConverter=genderConverter;
+    public UserConverter(CountryConverter countryConverter, GenderConverter genderConverter, RoleConverter roleConverter) {
+        this.countryConverter = countryConverter;
+        this.genderConverter = genderConverter;
+        this.roleConverter = roleConverter;
     }
-
 
     @Override
     public UserDTO sourceToDto(User source) {
@@ -31,6 +31,7 @@ public class UserConverter  implements MyConverter <User, UserDTO, UserCommand> 
         }else{
             UserDTO userDTO=new UserDTO();
             userDTO.setId(source.getId());
+            userDTO.setRolesDTO(roleConverter.sourceToDto(source.getRoles()));
             userDTO.setUsername(source.getUsername());
             userDTO.setPassword(source.getPassword());
             userDTO.setEmail(source.getEmail());
@@ -54,6 +55,7 @@ public class UserConverter  implements MyConverter <User, UserDTO, UserCommand> 
         }else{
             UserCommand userCommand=new UserCommand();
             userCommand.setId(source.getId());
+            userCommand.setRolesCommand(roleConverter.sourceToCommand(source.getRoles()));
             userCommand.setUsername(source.getUsername());
             userCommand.setPassword(source.getPassword());
             userCommand.setEmail(source.getEmail());
@@ -77,6 +79,7 @@ public class UserConverter  implements MyConverter <User, UserDTO, UserCommand> 
         }else{
             User user =new User();
             user.setId(dto.getId());
+            user.setRoles(roleConverter.dtoToSource(dto.getRolesDTO()));
             user.setUsername(dto.getUsername());
             user.setPassword(dto.getPassword());
             user.setEmail(dto.getEmail());
@@ -100,6 +103,7 @@ public class UserConverter  implements MyConverter <User, UserDTO, UserCommand> 
         }else{
             User user=new User();
             user.setId(command.getId());
+            user.setRoles(roleConverter.commandToSource(command.getRolesCommand()));
             user.setUsername(command.getUsername());
             user.setPassword(command.getPassword());
             user.setEmail(command.getEmail());
