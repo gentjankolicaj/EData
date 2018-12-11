@@ -14,6 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 public class RoleDTO {
 
+    private Long roleId;
+
     private String role;
 
     private List<UserDTO> usersDTO;

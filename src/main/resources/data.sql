@@ -286,10 +286,10 @@ insert into users(id,username,password, first_name, last_name, email, gender, bi
 insert into users(id,username,password, first_name, last_name,  email, gender, birthday, birthplace, country, rights, created_date, updated_date) values  (2,'test user female','password','jane','doe','janedoe@gmail.com','F','1990-09-01','Paris,France','France','USER','1990-09-01','1990-09-01' );
 
 --Insert int user_roles
-INSERT into user_roles(id,role) values('1','USER');
-INSERT into user_roles(id,role) values('2','USER');
-INSERT into user_roles(id,role) values('2','MANAGER');
-INSERT into user_roles(id,role) values('2','ADMIN');
+INSERT into user_roles(id,role_id) values('1','1');
+INSERT into user_roles(id,role_id) values('2','1');
+INSERT into user_roles(id,role_id) values('2','2');
+INSERT into user_roles(id,role_id) values('2','3');
 
 
 

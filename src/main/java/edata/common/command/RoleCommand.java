@@ -1,6 +1,5 @@
 package edata.common.command;
 
-import edata.common.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoleCommand {
+
+    private Long roleId;
 
     private String role;
 

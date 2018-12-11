@@ -1,13 +1,9 @@
 package edata.converter;
 
 import edata.common.command.RoleCommand;
-import edata.common.command.UserCommand;
 import edata.common.domain.Role;
-import edata.common.domain.User;
 import edata.common.dto.RoleDTO;
-import edata.common.dto.UserDTO;
 import edata.converter.core.MyConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -26,6 +22,7 @@ public class RoleConverter implements MyConverter<Role, RoleDTO, RoleCommand> {
             return null;
         }else{
             RoleDTO roleDTO=new RoleDTO();
+            roleDTO.setRoleId(source.getRoleId());
             roleDTO.setRole(source.getRole());
            return roleDTO;
         }
@@ -37,6 +34,7 @@ public class RoleConverter implements MyConverter<Role, RoleDTO, RoleCommand> {
             return null;
         }else{
             RoleCommand roleCommand=new RoleCommand();
+            roleCommand.setRoleId(source.getRoleId());
             roleCommand.setRole(source.getRole());
             return roleCommand;
         }
@@ -48,6 +46,7 @@ public class RoleConverter implements MyConverter<Role, RoleDTO, RoleCommand> {
             return null;
         }else{
             Role role=new Role();
+            role.setRoleId(dto.getRoleId());
             role.setRole(dto.getRole());
             return role;
         }
@@ -59,6 +58,7 @@ public class RoleConverter implements MyConverter<Role, RoleDTO, RoleCommand> {
             return null;
         }else{
             Role role=new Role();
+            role.setRoleId(command.getRoleId());
             role.setRole(command.getRole());
             return role;
         }
