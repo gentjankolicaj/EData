@@ -4,6 +4,8 @@ package edata.common.command.nasa.power;
 import edata.common.command.DataFormatCommand;
 import edata.common.command.TemperatureUnitCommand;
 import edata.common.command.UserCommand;
+import edata.statistic.core.Attribute;
+import edata.statistic.core.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +18,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PowerTemperatureCommand {
+public class PowerTemperatureCommand implements Item {
 
     @NotNull
     private Long id;
@@ -41,4 +43,12 @@ public class PowerTemperatureCommand {
 
     @NotNull
     private DataFormatCommand rawDataFormatCommand;
+
+    @Override
+    public Attribute getAttribute() {
+        Attribute attribute= new Attribute();
+        attribute.setName("Temperature");
+        attribute.setValue(this.value);
+        return attribute;
+    }
 }

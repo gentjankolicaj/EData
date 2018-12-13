@@ -1,6 +1,7 @@
 package edata.common.enums.power;
 
 public enum  TempAverage {
+
     DAILY("DAILY"), INTERANNUAL("INTERANNUAL"), CLIMATOLOGY("CLIMATOLOGY");
 
 

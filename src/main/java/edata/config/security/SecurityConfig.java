@@ -22,6 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
+
+    //authentication type
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
        auth.userDetailsService(userDetailsService)
@@ -44,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
+    //authorization
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
