@@ -18,40 +18,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private CustomAuthenticationProvider customAuthenticationProvider;
 
 
 
-
-    //authentication type,is done by using authentication provider UserDetailsService
+   //config my customAuthenticationProvider
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.userDetailsService(userDetailsService)
-       .passwordEncoder(getPasswordEncoder());
+        auth.authenticationProvider(customAuthenticationProvider);
+
     }
 
 
-    private PasswordEncoder getPasswordEncoder() {
-        return new PasswordEncoder() {
-            @Override
-            public String encode(CharSequence charSequence) {
-                return charSequence.toString();
-            }
 
-            @Override
-            public boolean matches(CharSequence charSequence, String s) {
-                return true;
-            }
-        };
-    }
-
-
-    //authorization
+    //Configuration for resource authorization
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-         http.authorizeRequests()
-                 .antMatchers("/h2").permitAll()
+
+        http.authorizeRequests()
+                 .antMatchers("/h2-console/").permitAll()
                  .antMatchers("/help").permitAll()
                  .antMatchers("/contact").permitAll()
                  .antMatchers("/about").permitAll()
