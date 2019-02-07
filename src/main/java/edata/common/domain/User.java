@@ -22,9 +22,6 @@ public class User {
     @Column(name="id")
     private Long id;
 
-    @ManyToMany(mappedBy = "users")
-    private List<Role> roles;
-
     @Column(name="username")
     private String username;
 

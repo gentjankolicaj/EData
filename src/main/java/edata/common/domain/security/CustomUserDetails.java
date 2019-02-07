@@ -18,7 +18,6 @@ public class CustomUserDetails extends User implements UserDetails {
 
     public CustomUserDetails(final User user){
         super.setId(user.getId());
-        super.setRoles(user.getRoles());
         super.setUsername(user.getUsername());
         super.setPassword(user.getPassword());
         super.setEmail(user.getEmail());
@@ -36,11 +35,8 @@ public class CustomUserDetails extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-       List<Role> rolesList=getRoles();
        List<SimpleGrantedAuthority> grantedAuthorityList=new ArrayList<>();
-       for(Role temp:rolesList){
-           grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_"+temp.getRole()));
-       }
+
        return grantedAuthorityList;
 
     }

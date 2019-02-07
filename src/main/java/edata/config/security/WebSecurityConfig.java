@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 //In this class we config security details
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -43,7 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                  .antMatchers("/about").permitAll()
                  .antMatchers("/home").permitAll()
                  .antMatchers("/sign").permitAll()
-                 .antMatchers("/user/**","/api/**").authenticated()
+                 .antMatchers("/user/**").authenticated()
+                 .antMatchers("/api/**").permitAll()
                  .and()
                    .formLogin().loginPage("/sign/").permitAll();
     }
