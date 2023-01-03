@@ -20,13 +20,11 @@ public class AboutController {
 
     @RequestMapping("")
     public String showAbout() {
-
         return "core/about";
     }
 
     @RequestMapping("/")
     public String showAbout2() {
-
         return "core/about";
     }
 }

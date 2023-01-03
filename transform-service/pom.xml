@@ -11,7 +11,7 @@
     <artifactId>transform-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>transform</name>
+    <name>transform-service</name>
     <url>http://maven.apache.org</url>
 
     <properties>

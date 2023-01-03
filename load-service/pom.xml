@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>load-service</artifactId>
-    <name>load</name>
+    <name>load-service</name>
     <description>Load module of EData project</description>
 
     <properties>

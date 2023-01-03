@@ -11,7 +11,7 @@
     <artifactId>extract-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>extract</name>
+    <name>extract-service</name>
     <url>http://maven.apache.org</url>
 
     <properties>
