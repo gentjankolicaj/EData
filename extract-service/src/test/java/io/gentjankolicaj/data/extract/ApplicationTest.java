@@ -25,9 +25,9 @@ public class ApplicationTest {
     }
 
     @Test
-    void getImplementedJobs() throws IOException {
+    void getJobsImpl() throws IOException {
         ApplicationConfigYaml applicationYaml = Application.getConfiguration();
-        List<Job> jobs = Application.getImplementedJobs(applicationYaml.getJobManager().getJobs());
+        List<Job> jobs = Application.getJobsImpl(applicationYaml.getJobManager().getJobs());
         Assertions.assertTrue(CollectionUtils.isNotEmpty(jobs));
     }
 }

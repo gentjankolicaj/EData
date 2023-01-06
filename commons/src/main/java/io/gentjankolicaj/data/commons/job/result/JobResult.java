@@ -1,4 +1,4 @@
-package io.gentjankolicaj.data.extract.job.result;
+package io.gentjankolicaj.data.commons.job.result;
 
 
 public abstract class JobResult<M, D> {

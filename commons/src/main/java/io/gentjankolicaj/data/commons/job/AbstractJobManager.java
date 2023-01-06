@@ -21,5 +21,7 @@ public abstract class AbstractJobManager<T extends AbstractJobManagerConfigYaml>
         return Executors.newFixedThreadPool(jobManagerYaml.getThreadPoolSize());
     }
 
+    public abstract void runJobs(Job... jobs);
+
     public abstract void runJobs(Collection<Job> jobs);
 }

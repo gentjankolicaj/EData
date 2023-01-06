@@ -1,15 +1,16 @@
 package io.gentjankolicaj.data.transform.yaml;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+import java.util.List;
+
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CacheConfigYml {
-    private String key;
-    private int size;
-    private long duration;
+public class HttpServerConfigYaml {
+    private int port;
+    private List<HttpPathConfigYaml> paths;
 
 }

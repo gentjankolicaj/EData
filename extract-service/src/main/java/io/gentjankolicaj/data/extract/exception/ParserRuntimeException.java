@@ -1,4 +1,7 @@
 package io.gentjankolicaj.data.extract.exception;
 
-public class ParserRuntimeException {
+import lombok.experimental.StandardException;
+
+@StandardException
+public final class ParserRuntimeException extends RuntimeException {
 }

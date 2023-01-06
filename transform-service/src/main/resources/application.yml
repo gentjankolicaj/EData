@@ -3,19 +3,16 @@ httpServer:
   port: 9000
   paths:
     - value: /api/v1/nasa
-      method: post
-    - path: /api/v1/openweather
-      method: post
-
+      method: POST
+    - value: /api/v1/openweather
+      method: POST
 caches:
   - key: nasa-cache
     size: 10
     duration: 5
-
   - key: openweather-cache
     size: 10
     duration: 5
-
 jobManager:
   threadPoolSize: 2
   jobs:
@@ -23,9 +20,14 @@ jobManager:
       sleep: 2000
       failedAttemptMax: 5
       cacheKey: nasa-cache
-
     - name: openweather-job
       sleep: 2000
       failedAttemptMax: 5
       cacheKey: openweather-cache
-
+redis:
+  host: localhost
+  port: 6379
+  password: P@ssw0rd
+  useSSL: false
+  databaseNumber: 1
+  defaultTimeout: 10;

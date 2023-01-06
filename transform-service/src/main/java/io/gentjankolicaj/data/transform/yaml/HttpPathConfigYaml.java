@@ -1,13 +1,13 @@
 package io.gentjankolicaj.data.transform.yaml;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class HttpPathConfigYml {
+public class HttpPathConfigYaml {
     private String value;
     private String method;
 }

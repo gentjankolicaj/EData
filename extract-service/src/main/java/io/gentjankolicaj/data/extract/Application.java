@@ -17,17 +17,16 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) throws IOException {
         ApplicationConfigYaml applicationYaml = getConfiguration();
-        List<Job> jobs = getImplementedJobs(applicationYaml.getJobManager().getJobs());
-        JobManager abstractJobManager = new JobManager(applicationYaml.getJobManager());
-        abstractJobManager.runJobs(jobs);
+        JobManager jobManager = new JobManager(applicationYaml.getJobManager());
+        jobManager.runJobs(getJobsImpl(applicationYaml.getJobManager().getJobs()));
     }
 
     static ApplicationConfigYaml getConfiguration() throws IOException {
         return YamlUtils.read("application.yml", ApplicationConfigYaml.class);
     }
 
-    static List<Job> getImplementedJobs(List<JobConfigYaml> jobYamls) {
-        return List.of(new NasaJob(jobYamls.stream().filter(e -> e.getName().equalsIgnoreCase(JobConstants.NASA_JOB_NAME)).findAny().get(), new NasaRequestWrapper()),
-                new OpenWeatherJob(jobYamls.stream().filter(e -> e.getName().equalsIgnoreCase(JobConstants.OPENWEATHER_JOB_NAME)).findAny().get(), new OpenWeatherRequestWrapper()));
+    static List<Job> getJobsImpl(List<JobConfigYaml> jobConfigYamls) {
+        return List.of(new NasaJob(jobConfigYamls.stream().filter(e -> e.getName().equalsIgnoreCase(JobConstants.NASA_JOB_NAME)).findAny().get(), new NasaRequestWrapper()),
+                new OpenWeatherJob(jobConfigYamls.stream().filter(e -> e.getName().equalsIgnoreCase(JobConstants.OPENWEATHER_JOB_NAME)).findAny().get(), new OpenWeatherRequestWrapper()));
     }
 }

@@ -8,19 +8,18 @@ import io.gentjankolicaj.data.commons.domain.nasa.power.PowerPressure;
 import io.gentjankolicaj.data.load.repository.PressureUnitRepository;
 import io.gentjankolicaj.data.load.repository.UserRepository;
 import org.apache.commons.collections4.IterableUtils;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@RunWith(SpringRunner.class)
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 @DataJpaTest
 public class PowerPressureRepositoryTest {
 
@@ -59,13 +58,8 @@ public class PowerPressureRepositoryTest {
 
         PowerPressure powerPressure = new PowerPressure();
         powerPressure.setValue(12f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
         powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("https://localhost.com/");
-
-        powerPressure.setUser(user);
+        powerPressure.setRawDataFormat("json");
         powerPressureRepository.save(powerPressure);
 
         System.out.println(powerPressure);
@@ -98,40 +92,25 @@ public class PowerPressureRepositoryTest {
 
         PowerPressure powerPressure = new PowerPressure();
         powerPressure.setValue(12f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
+
 
         powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("https://localhost.com/");
 
-        powerPressure.setUser(user);
 
         PowerPressure powerPressure2 = new PowerPressure();
         powerPressure.setValue(132f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
-        powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("2https://localhost.com/");
 
-        powerPressure2.setUser(user);
+        powerPressure.setPressureUnit(pressureUnit);
+
 
         PowerPressure powerPressure3 = new PowerPressure();
         powerPressure.setValue(122f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
-        powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("3333https://localhost.com/");
 
-        powerPressure3.setUser(user);
+        powerPressure.setPressureUnit(pressureUnit);
+
 
         List<PowerPressure> list = Arrays.asList(powerPressure, powerPressure2, powerPressure3);
-
         powerPressureRepository.saveAll(list);
-
-        System.out.println(powerPressure);
     }
 
     @Test
@@ -163,22 +142,16 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure = new PowerPressure();
         powerPressure.setId(id);
         powerPressure.setValue(12f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
+
 
         powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("https://localhost.com/");
 
-        powerPressure.setUser(user);
 
         powerPressureRepository.save(powerPressure);
 
         Optional<PowerPressure> optional = powerPressureRepository.findById(id);
         if (!optional.isPresent()) {
             throw new RuntimeException("Power pressure  data with id" + id + " not found.");
-        } else {
-            assertEquals(optional.get().getId(), powerPressure.getId());
         }
     }
 
@@ -211,17 +184,9 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure = new PowerPressure();
         powerPressure.setId(id);
         powerPressure.setValue(12f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
-
         powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("https://localhost.com/");
-
-        powerPressure.setUser(user);
 
         powerPressureRepository.save(powerPressure);
-
         Iterable<PowerPressure> iterable = powerPressureRepository.findAll();
 
         int i = IterableUtils.size(iterable);
@@ -259,28 +224,18 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure = new PowerPressure();
         powerPressure.setId(id);
         powerPressure.setValue(12f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
 
         powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("https://localhost.com/");
 
-        powerPressure.setUser(user);
 
         PowerPressure initialSave = powerPressureRepository.save(powerPressure);
 
-        powerPressure.setUser(user);
-        powerPressure.setValue(123f);
 
-        powerPressure.setDate(new Date());
-        powerPressure.setRawDataFormat(new DataFormat("txt"));
-        powerPressure.setUrl("https://localhost.org/");
+        powerPressure.setValue(123f);
 
         PowerPressure secondarySave = powerPressureRepository.save(powerPressure);
 
         assertNotEquals(initialSave.getId(), secondarySave.getId());
-        assertNotEquals(initialSave.getUrl(), secondarySave.getUrl());
     }
 
     @Test
@@ -312,17 +267,9 @@ public class PowerPressureRepositoryTest {
         PowerPressure powerPressure = new PowerPressure();
         powerPressure.setId(id);
         powerPressure.setValue(12f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
-
         powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("https://localhost.com/");
-
-        powerPressure.setUser(user);
 
         powerPressureRepository.save(powerPressure);
-
         Optional<PowerPressure> optional = powerPressureRepository.findById(id);
 
         if (optional.isPresent()) {
@@ -356,34 +303,15 @@ public class PowerPressureRepositoryTest {
 
         PowerPressure powerPressure = new PowerPressure();
         powerPressure.setValue(12f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
-
         powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("https://localhost.com/");
-
-        powerPressure.setUser(user);
 
         PowerPressure powerPressure2 = new PowerPressure();
         powerPressure.setValue(132f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
         powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("2https://localhost.com/");
-
-        powerPressure2.setUser(user);
 
         PowerPressure powerPressure3 = new PowerPressure();
         powerPressure.setValue(122f);
-        powerPressure.setIdentifier(singlePoint);
-        powerPressure.setDate(new Date());
-        powerPressure.setPressureUnit(pressureUnit);
-        powerPressure.setRawDataFormat(new DataFormat("json"));
-        powerPressure.setUrl("3333https://localhost.com/");
 
-        powerPressure3.setUser(user);
 
         List<PowerPressure> list = Arrays.asList(powerPressure, powerPressure2, powerPressure3);
 

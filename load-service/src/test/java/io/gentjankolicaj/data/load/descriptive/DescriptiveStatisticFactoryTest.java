@@ -5,13 +5,13 @@ import io.gentjankolicaj.data.load.statistic.core.FactoryCreator;
 import io.gentjankolicaj.data.load.statistic.core.Item;
 import io.gentjankolicaj.data.load.statistic.core.StatisticFactoryType;
 import io.gentjankolicaj.data.load.statistic.descriptive.DescriptiveStatisticFactory;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class DescriptiveStatisticFactoryTest {
