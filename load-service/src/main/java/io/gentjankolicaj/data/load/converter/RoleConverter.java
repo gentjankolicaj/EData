@@ -1,7 +1,7 @@
 package io.gentjankolicaj.data.load.converter;
 
+import io.gentjankolicaj.data.commons.domain.Role;
 import io.gentjankolicaj.data.load.common.command.RoleCommand;
-import io.gentjankolicaj.data.load.common.domain.Role;
 import io.gentjankolicaj.data.load.common.dto.RoleDTO;
 import io.gentjankolicaj.data.load.converter.core.MyConverter;
 import org.springframework.stereotype.Component;

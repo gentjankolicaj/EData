@@ -1,10 +1,10 @@
 package io.gentjankolicaj.data.load.api.v1.controller;
 
 
+import io.gentjankolicaj.data.commons.validator.CountryRequestDataValidator;
 import io.gentjankolicaj.data.load.common.dto.CountryDTO;
 import io.gentjankolicaj.data.load.exception.api.request.CountryBadRequestException;
 import io.gentjankolicaj.data.load.service.CountryService;
-import io.gentjankolicaj.data.load.validator.CountryRequestDataValidator;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

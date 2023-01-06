@@ -1,11 +1,10 @@
 package io.gentjankolicaj.data.load.repository.nasa.power;
 
-import io.gentjankolicaj.data.load.common.domain.DataFormat;
-import io.gentjankolicaj.data.load.common.domain.Gender;
-import io.gentjankolicaj.data.load.common.domain.PressureUnit;
-import io.gentjankolicaj.data.load.common.domain.User;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.Identifier;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.PowerPressure;
+import io.gentjankolicaj.data.commons.domain.Gender;
+import io.gentjankolicaj.data.commons.domain.PressureUnit;
+import io.gentjankolicaj.data.commons.domain.User;
+import io.gentjankolicaj.data.commons.domain.nasa.power.Identifier;
+import io.gentjankolicaj.data.commons.domain.nasa.power.PowerPressure;
 import io.gentjankolicaj.data.load.repository.PressureUnitRepository;
 import io.gentjankolicaj.data.load.repository.UserRepository;
 import org.apache.commons.collections4.IterableUtils;

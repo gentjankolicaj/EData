@@ -1,6 +1,6 @@
 package io.gentjankolicaj.data.load.repository;
 
-import io.gentjankolicaj.data.load.common.domain.Role;
+import io.gentjankolicaj.data.commons.domain.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

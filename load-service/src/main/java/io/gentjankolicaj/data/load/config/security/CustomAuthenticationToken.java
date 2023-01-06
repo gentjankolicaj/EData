@@ -1,6 +1,6 @@
 package io.gentjankolicaj.data.load.config.security;
 
-import io.gentjankolicaj.data.load.common.domain.security.CustomUserDetails;
+import io.gentjankolicaj.data.load.security.CustomUserDetails;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 

@@ -1,11 +1,9 @@
 package io.gentjankolicaj.data.load.converter.nasa.power;
 
+import io.gentjankolicaj.data.commons.domain.nasa.power.PowerTemperature;
 import io.gentjankolicaj.data.load.common.command.nasa.power.PowerTemperatureCommand;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.PowerTemperature;
 import io.gentjankolicaj.data.load.common.dto.nasa.power.PowerTemperatureDTO;
-import io.gentjankolicaj.data.load.converter.DataFormatConverter;
 import io.gentjankolicaj.data.load.converter.TemperatureUnitConverter;
-import io.gentjankolicaj.data.load.converter.UserConverter;
 import io.gentjankolicaj.data.load.converter.core.MyNasaPowerConverter;
 import org.springframework.stereotype.Component;
 
@@ -16,16 +14,12 @@ import java.util.List;
 @Component
 public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemperature, PowerTemperatureDTO, PowerTemperatureCommand> {
 
-    private final UserConverter userConverter;
-    private final TemperatureUnitConverter temperatureUnitConverter;
-    private final IdentifierConverter identifierConverter;
-    private final DataFormatConverter dataFormatConverter;
 
-    public PowerTemperatureConverter(UserConverter userConverter, TemperatureUnitConverter temperatureUnitConverter, IdentifierConverter identifierConverter, DataFormatConverter dataFormatConverter) {
-        this.userConverter = userConverter;
+    private final TemperatureUnitConverter temperatureUnitConverter;
+
+    public PowerTemperatureConverter(TemperatureUnitConverter temperatureUnitConverter) {
         this.temperatureUnitConverter = temperatureUnitConverter;
-        this.identifierConverter = identifierConverter;
-        this.dataFormatConverter = dataFormatConverter;
+
     }
 
     @Override
@@ -35,13 +29,9 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
         } else {
             PowerTemperatureDTO powerTemperatureDTO = new PowerTemperatureDTO();
             powerTemperatureDTO.setId(source.getId());
-            powerTemperatureDTO.setUserDTO(userConverter.sourceToDto(source.getUser()));
             powerTemperatureDTO.setValue(source.getValue());
             powerTemperatureDTO.setTemperatureUnitDTO(temperatureUnitConverter.sourceToDto(source.getTemperatureUnit()));
             powerTemperatureDTO.setDate(source.getDate());
-            powerTemperatureDTO.setUrl(source.getUrl());
-            powerTemperatureDTO.setIdentifierDTO(identifierConverter.sourceToDto(source.getIdentifier()));
-            powerTemperatureDTO.setRawDataFormatDTO(dataFormatConverter.sourceToDto(source.getRawDataFormat()));
             return powerTemperatureDTO;
         }
     }
@@ -53,13 +43,9 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
         } else {
             PowerTemperatureCommand powerTemperatureCommand = new PowerTemperatureCommand();
             powerTemperatureCommand.setId(source.getId());
-            powerTemperatureCommand.setUserCommand(userConverter.sourceToCommand(source.getUser()));
             powerTemperatureCommand.setValue(source.getValue());
             powerTemperatureCommand.setTemperatureUnitCommand(temperatureUnitConverter.sourceToCommand(source.getTemperatureUnit()));
             powerTemperatureCommand.setDate(source.getDate());
-            powerTemperatureCommand.setUrl(source.getUrl());
-            powerTemperatureCommand.setIdentifierCommand(identifierConverter.sourceToCommand(source.getIdentifier()));
-            powerTemperatureCommand.setRawDataFormatCommand(dataFormatConverter.sourceToCommand(source.getRawDataFormat()));
             return powerTemperatureCommand;
 
         }
@@ -72,13 +58,9 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
         } else {
             PowerTemperature powerTemperature = new PowerTemperature();
             powerTemperature.setId(dto.getId());
-            powerTemperature.setUser(userConverter.dtoToSource(dto.getUserDTO()));
             powerTemperature.setValue(dto.getValue());
             powerTemperature.setTemperatureUnit(temperatureUnitConverter.dtoToSource(dto.getTemperatureUnitDTO()));
             powerTemperature.setDate(dto.getDate());
-            powerTemperature.setUrl(dto.getUrl());
-            powerTemperature.setIdentifier(identifierConverter.dtoToSource(dto.getIdentifierDTO()));
-            powerTemperature.setRawDataFormat(dataFormatConverter.dtoToSource(dto.getRawDataFormatDTO()));
             return powerTemperature;
         }
     }
@@ -90,13 +72,9 @@ public class PowerTemperatureConverter implements MyNasaPowerConverter<PowerTemp
         } else {
             PowerTemperature powerTemperature = new PowerTemperature();
             powerTemperature.setId(command.getId());
-            powerTemperature.setUser(userConverter.commandToSource(command.getUserCommand()));
             powerTemperature.setValue(command.getValue());
             powerTemperature.setTemperatureUnit(temperatureUnitConverter.commandToSource(command.getTemperatureUnitCommand()));
             powerTemperature.setDate(command.getDate());
-            powerTemperature.setUrl(command.getUrl());
-            powerTemperature.setIdentifier(identifierConverter.commandToSource(command.getIdentifierCommand()));
-            powerTemperature.setRawDataFormat(dataFormatConverter.commandToSource(command.getRawDataFormatCommand()));
             return powerTemperature;
         }
     }

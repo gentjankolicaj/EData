@@ -1,7 +1,7 @@
 package io.gentjankolicaj.data.load.service;
 
+import io.gentjankolicaj.data.commons.domain.PressureUnit;
 import io.gentjankolicaj.data.load.common.command.PressureUnitCommand;
-import io.gentjankolicaj.data.load.common.domain.PressureUnit;
 import io.gentjankolicaj.data.load.common.dto.PressureUnitDTO;
 import io.gentjankolicaj.data.load.converter.PressureUnitConverter;
 import io.gentjankolicaj.data.load.exception.resource.NullIdException;

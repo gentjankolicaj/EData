@@ -1,7 +1,7 @@
 package io.gentjankolicaj.data.load.service.nasa;
 
+import io.gentjankolicaj.data.commons.domain.nasa.power.Identifier;
 import io.gentjankolicaj.data.load.common.command.nasa.power.IdentifierCommand;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.Identifier;
 import io.gentjankolicaj.data.load.common.dto.nasa.power.IdentifierDTO;
 import io.gentjankolicaj.data.load.converter.nasa.power.IdentifierConverter;
 import io.gentjankolicaj.data.load.exception.resource.IdentifierNotFoundException;

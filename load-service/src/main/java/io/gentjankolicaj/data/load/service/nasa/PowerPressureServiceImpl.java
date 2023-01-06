@@ -1,12 +1,11 @@
 package io.gentjankolicaj.data.load.service.nasa;
 
 
-import io.gentjankolicaj.data.load.client.nasa_power.NasaClient;
+import io.gentjankolicaj.data.commons.domain.User;
+import io.gentjankolicaj.data.commons.domain.nasa.power.PowerPressure;
+import io.gentjankolicaj.data.commons.enums.nasa.power.*;
 import io.gentjankolicaj.data.load.common.command.nasa.power.PowerPressureCommand;
-import io.gentjankolicaj.data.load.common.domain.User;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.PowerPressure;
 import io.gentjankolicaj.data.load.common.dto.nasa.power.PowerPressureDTO;
-import io.gentjankolicaj.data.load.common.enums.power.*;
 import io.gentjankolicaj.data.load.converter.nasa.power.PowerPressureConverter;
 import io.gentjankolicaj.data.load.exception.resource.NullIdException;
 import io.gentjankolicaj.data.load.exception.resource.NullReferenceException;
@@ -27,15 +26,14 @@ public class PowerPressureServiceImpl implements PowerPressureService {
 
     private final PowerPressureRepository powerPressureRepository;
     private final PowerPressureConverter powerPressureConverter;
-    private final NasaClient nasaClient;
+
     private final UserService userService;
 
 
     @Autowired
-    public PowerPressureServiceImpl(PowerPressureRepository powerPressureRepository, PowerPressureConverter powerPressureConverter, NasaClient nasaClient, UserService userService) {
+    public PowerPressureServiceImpl(PowerPressureRepository powerPressureRepository, PowerPressureConverter powerPressureConverter, UserService userService) {
         this.powerPressureRepository = powerPressureRepository;
         this.powerPressureConverter = powerPressureConverter;
-        this.nasaClient = nasaClient;
         this.userService = userService;
     }
 
@@ -91,12 +89,9 @@ public class PowerPressureServiceImpl implements PowerPressureService {
                 return powerPressureConverter.sourceToDto(savedPowerPressure);
             } else {
                 PowerPressure actual = optional.get();
-                actual.setUser(newPowerPressure.getUser());
                 actual.setValue(newPowerPressure.getValue());
                 actual.setPressureUnit(newPowerPressure.getPressureUnit());
                 actual.setDate(newPowerPressure.getDate());
-                actual.setUrl(newPowerPressure.getUrl());
-                actual.setIdentifier(newPowerPressure.getIdentifier());
                 actual.setRawDataFormat(newPowerPressure.getRawDataFormat());
                 return powerPressureConverter.sourceToDto(actual);
             }
@@ -115,12 +110,9 @@ public class PowerPressureServiceImpl implements PowerPressureService {
                 return powerPressureConverter.sourceToCommand(savedPowerPressure);
             } else {
                 PowerPressure actual = optional.get();
-                actual.setUser(newPowerPressure.getUser());
                 actual.setValue(newPowerPressure.getValue());
                 actual.setPressureUnit(newPowerPressure.getPressureUnit());
                 actual.setDate(newPowerPressure.getDate());
-                actual.setUrl(newPowerPressure.getUrl());
-                actual.setIdentifier(newPowerPressure.getIdentifier());
                 actual.setRawDataFormat(newPowerPressure.getRawDataFormat());
                 return powerPressureConverter.sourceToCommand(actual);
             }
@@ -188,7 +180,7 @@ public class PowerPressureServiceImpl implements PowerPressureService {
 
 
         //Retrieved data.
-        List<PowerPressure> retrievedList = nasaClient.retrievePressure(identifierEnum, dataParametersEnum, startDate, endDate, userCommunityEnum, tempAverageEnum, outputFormatEnum, lat, lon, bbox);
+        List<PowerPressure> retrievedList = null;//nasaClient.retrievePressure(identifierEnum, dataParametersEnum, startDate, endDate, userCommunityEnum, tempAverageEnum, outputFormatEnum, lat, lon, bbox);
 
         //Save data to db
         Iterable<PowerPressure> savedData = saveRetrievedData(retrievedList, user);
@@ -209,7 +201,7 @@ public class PowerPressureServiceImpl implements PowerPressureService {
         User user = userService.getById(userId);
 
         //Retrieved data.
-        List<PowerPressure> retrievedList = nasaClient.retrievePressure(identifierEnum, dataParametersEnum, startDate, endDate, userCommunityEnum, tempAverageEnum, outputFormatEnum, lat, lon, bbox);
+        List<PowerPressure> retrievedList = null;// nasaClient.retrievePressure(identifierEnum, dataParametersEnum, startDate, endDate, userCommunityEnum, tempAverageEnum, outputFormatEnum, lat, lon, bbox);
 
         //Saved data to db
         Iterable<PowerPressure> savedData = saveRetrievedData(retrievedList, user);
@@ -219,9 +211,6 @@ public class PowerPressureServiceImpl implements PowerPressureService {
 
 
     private Iterable<PowerPressure> saveRetrievedData(List<PowerPressure> retrievedList, User user) {
-        for (PowerPressure temp : retrievedList) {
-            temp.setUser(user);
-        }
         return powerPressureRepository.saveAll(retrievedList);
     }
 

@@ -1,11 +1,9 @@
 package io.gentjankolicaj.data.load.converter.nasa.power;
 
+import io.gentjankolicaj.data.commons.domain.nasa.power.PowerPressure;
 import io.gentjankolicaj.data.load.common.command.nasa.power.PowerPressureCommand;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.PowerPressure;
 import io.gentjankolicaj.data.load.common.dto.nasa.power.PowerPressureDTO;
-import io.gentjankolicaj.data.load.converter.DataFormatConverter;
 import io.gentjankolicaj.data.load.converter.PressureUnitConverter;
-import io.gentjankolicaj.data.load.converter.UserConverter;
 import io.gentjankolicaj.data.load.converter.core.MyNasaPowerConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,16 +15,11 @@ import java.util.List;
 public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressure, PowerPressureDTO, PowerPressureCommand> {
 
     private final PressureUnitConverter pressureUnitConverter;
-    private final UserConverter userConverter;
-    private final IdentifierConverter identifierConverter;
-    private final DataFormatConverter dataFormatConverter;
+
 
     @Autowired
-    public PowerPressureConverter(PressureUnitConverter pressureUnitConverter, UserConverter userConverter, IdentifierConverter identifierConverter, DataFormatConverter dataFormatConverter) {
+    public PowerPressureConverter(PressureUnitConverter pressureUnitConverter) {
         this.pressureUnitConverter = pressureUnitConverter;
-        this.userConverter = userConverter;
-        this.identifierConverter = identifierConverter;
-        this.dataFormatConverter = dataFormatConverter;
     }
 
     @Override
@@ -36,13 +29,9 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
         } else {
             PowerPressureDTO powerPressureDTO = new PowerPressureDTO();
             powerPressureDTO.setId(source.getId());
-            powerPressureDTO.setUserDTO(userConverter.sourceToDto(source.getUser()));
             powerPressureDTO.setValue(source.getValue());
             powerPressureDTO.setPressureUnitDTO(pressureUnitConverter.sourceToDto(source.getPressureUnit()));
             powerPressureDTO.setDate(source.getDate());
-            powerPressureDTO.setUrl(source.getUrl());
-            powerPressureDTO.setIdentifierDTO(identifierConverter.sourceToDto(source.getIdentifier()));
-            powerPressureDTO.setRawDataFormatDTO(dataFormatConverter.sourceToDto(source.getRawDataFormat()));
             return powerPressureDTO;
         }
     }
@@ -54,13 +43,9 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
         } else {
             PowerPressureCommand powerPressureCommand = new PowerPressureCommand();
             powerPressureCommand.setId(source.getId());
-            powerPressureCommand.setUserCommand(userConverter.sourceToCommand(source.getUser()));
             powerPressureCommand.setValue(source.getValue());
             powerPressureCommand.setPressureUnitCommand(pressureUnitConverter.sourceToCommand(source.getPressureUnit()));
             powerPressureCommand.setDate(source.getDate());
-            powerPressureCommand.setUrl(source.getUrl());
-            powerPressureCommand.setIdentifierCommand(identifierConverter.sourceToCommand(source.getIdentifier()));
-            powerPressureCommand.setRawDataFormatCommand(dataFormatConverter.sourceToCommand(source.getRawDataFormat()));
             return powerPressureCommand;
         }
     }
@@ -72,13 +57,9 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
         } else {
             PowerPressure powerPressure = new PowerPressure();
             powerPressure.setId(dto.getId());
-            powerPressure.setUser(userConverter.dtoToSource(dto.getUserDTO()));
             powerPressure.setValue(dto.getValue());
             powerPressure.setPressureUnit(pressureUnitConverter.dtoToSource(dto.getPressureUnitDTO()));
             powerPressure.setDate(dto.getDate());
-            powerPressure.setUrl(dto.getUrl());
-            powerPressure.setIdentifier(identifierConverter.dtoToSource(dto.getIdentifierDTO()));
-            powerPressure.setRawDataFormat(dataFormatConverter.dtoToSource(dto.getRawDataFormatDTO()));
             return powerPressure;
         }
     }
@@ -90,13 +71,9 @@ public class PowerPressureConverter implements MyNasaPowerConverter<PowerPressur
         } else {
             PowerPressure powerPressure = new PowerPressure();
             powerPressure.setId(command.getId());
-            powerPressure.setUser(userConverter.commandToSource(command.getUserCommand()));
             powerPressure.setValue(command.getValue());
             powerPressure.setPressureUnit(pressureUnitConverter.commandToSource(command.getPressureUnitCommand()));
             powerPressure.setDate(command.getDate());
-            powerPressure.setUrl(command.getUrl());
-            powerPressure.setIdentifier(identifierConverter.commandToSource(command.getIdentifierCommand()));
-            powerPressure.setRawDataFormat(dataFormatConverter.commandToSource(command.getRawDataFormatCommand()));
             return powerPressure;
         }
     }

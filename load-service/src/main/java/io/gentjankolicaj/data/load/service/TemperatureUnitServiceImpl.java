@@ -1,7 +1,7 @@
 package io.gentjankolicaj.data.load.service;
 
+import io.gentjankolicaj.data.commons.domain.TemperatureUnit;
 import io.gentjankolicaj.data.load.common.command.TemperatureUnitCommand;
-import io.gentjankolicaj.data.load.common.domain.TemperatureUnit;
 import io.gentjankolicaj.data.load.common.dto.TemperatureUnitDTO;
 import io.gentjankolicaj.data.load.converter.TemperatureUnitConverter;
 import io.gentjankolicaj.data.load.exception.resource.NullIdException;

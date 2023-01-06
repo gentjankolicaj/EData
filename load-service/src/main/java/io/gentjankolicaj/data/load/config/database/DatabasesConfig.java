@@ -52,7 +52,7 @@ public class DatabasesConfig {
     }
 
 
-    //To be propely implemented with more logic
+    //To be properly implemented with more logic
     private Integer checkPort(String port) {
         if (port == null || port.equalsIgnoreCase("0")) {
             return new Integer(3306);

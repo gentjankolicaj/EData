@@ -1,7 +1,7 @@
 package io.gentjankolicaj.data.load.converter;
 
+import io.gentjankolicaj.data.commons.domain.User;
 import io.gentjankolicaj.data.load.common.command.UserCommand;
-import io.gentjankolicaj.data.load.common.domain.User;
 import io.gentjankolicaj.data.load.common.dto.UserDTO;
 import io.gentjankolicaj.data.load.converter.core.MyConverter;
 import org.springframework.beans.factory.annotation.Autowired;

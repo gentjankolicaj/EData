@@ -1,8 +1,8 @@
 package io.gentjankolicaj.data.load.repository;
 
-import io.gentjankolicaj.data.load.common.domain.Country;
-import io.gentjankolicaj.data.load.common.domain.Gender;
-import io.gentjankolicaj.data.load.common.domain.User;
+import io.gentjankolicaj.data.commons.domain.Country;
+import io.gentjankolicaj.data.commons.domain.Gender;
+import io.gentjankolicaj.data.commons.domain.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

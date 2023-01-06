@@ -1,0 +1,31 @@
+name: transform-service
+httpServer:
+  port: 9000
+  paths:
+    - value: /api/v1/nasa
+      method: post
+    - path: /api/v1/openweather
+      method: post
+
+caches:
+  - key: nasa-cache
+    size: 10
+    duration: 5
+
+  - key: openweather-cache
+    size: 10
+    duration: 5
+
+jobManager:
+  threadPoolSize: 2
+  jobs:
+    - name: nasa-job
+      sleep: 2000
+      failedAttemptMax: 5
+      cacheKey: nasa-cache
+
+    - name: openweather-job
+      sleep: 2000
+      failedAttemptMax: 5
+      cacheKey: openweather-cache
+

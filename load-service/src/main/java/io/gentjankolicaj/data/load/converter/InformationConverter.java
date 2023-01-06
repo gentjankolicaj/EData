@@ -1,9 +1,9 @@
 package io.gentjankolicaj.data.load.converter;
 
+import io.gentjankolicaj.data.commons.domain.Information;
+import io.gentjankolicaj.data.commons.domain.Language;
 import io.gentjankolicaj.data.load.common.command.InformationCommand;
 import io.gentjankolicaj.data.load.common.command.LanguageCommand;
-import io.gentjankolicaj.data.load.common.domain.Information;
-import io.gentjankolicaj.data.load.common.domain.Language;
 import io.gentjankolicaj.data.load.common.dto.InformationDTO;
 import io.gentjankolicaj.data.load.converter.core.MyConverter;
 import org.springframework.stereotype.Component;

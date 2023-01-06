@@ -1,7 +1,7 @@
 package io.gentjankolicaj.data.load.service;
 
+import io.gentjankolicaj.data.commons.domain.Country;
 import io.gentjankolicaj.data.load.common.command.CountryCommand;
-import io.gentjankolicaj.data.load.common.domain.Country;
 import io.gentjankolicaj.data.load.common.dto.CountryDTO;
 import io.gentjankolicaj.data.load.converter.CountryConverter;
 import io.gentjankolicaj.data.load.exception.resource.CountryNotFoundException;

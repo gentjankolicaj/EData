@@ -1,19 +1,8 @@
 package io.gentjankolicaj.data.load.exception.api.request;
 
-public class PowerPressureBadRequestException extends RuntimeException {
+import lombok.experimental.StandardException;
 
-    public PowerPressureBadRequestException() {
-    }
+@StandardException
+public final class PowerPressureBadRequestException extends RuntimeException {
 
-    public PowerPressureBadRequestException(String message) {
-        super(message);
-    }
-
-    public PowerPressureBadRequestException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public PowerPressureBadRequestException(Throwable cause) {
-        super(cause);
-    }
 }

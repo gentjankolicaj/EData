@@ -1,6 +1,6 @@
 package io.gentjankolicaj.data.load.repository;
 
-import io.gentjankolicaj.data.load.common.domain.TemperatureUnit;
+import io.gentjankolicaj.data.commons.domain.TemperatureUnit;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

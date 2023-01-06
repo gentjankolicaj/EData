@@ -1,9 +1,9 @@
 package io.gentjankolicaj.data.load.config.security;
 
-import io.gentjankolicaj.data.load.common.domain.User;
-import io.gentjankolicaj.data.load.common.domain.security.CustomUserDetails;
+import io.gentjankolicaj.data.commons.domain.User;
+import io.gentjankolicaj.data.load.security.CustomUserDetails;
+import io.gentjankolicaj.data.load.security.TokenService;
 import io.gentjankolicaj.data.load.service.UserService;
-import io.gentjankolicaj.data.load.service.other.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

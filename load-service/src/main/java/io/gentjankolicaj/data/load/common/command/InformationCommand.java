@@ -1,6 +1,6 @@
 package io.gentjankolicaj.data.load.common.command;
 
-import io.gentjankolicaj.data.load.common.enums.InformationScope;
+import io.gentjankolicaj.data.commons.enums.InformationScope;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

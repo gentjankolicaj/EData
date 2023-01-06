@@ -1,10 +1,9 @@
 package io.gentjankolicaj.data.load.repository.nasa.power;
 
-import io.gentjankolicaj.data.load.common.domain.DataFormat;
-import io.gentjankolicaj.data.load.common.domain.TemperatureUnit;
-import io.gentjankolicaj.data.load.common.domain.User;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.Identifier;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.PowerTemperature;
+import io.gentjankolicaj.data.commons.domain.TemperatureUnit;
+import io.gentjankolicaj.data.commons.domain.User;
+import io.gentjankolicaj.data.commons.domain.nasa.power.Identifier;
+import io.gentjankolicaj.data.commons.domain.nasa.power.PowerTemperature;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -25,5 +24,5 @@ public interface PowerTemperatureRepository extends CrudRepository<PowerTemperat
 
     List<PowerTemperature> findPowerTemperaturesByIdentifier(Identifier identifier);
 
-    List<PowerTemperature> findPowerTemperaturesByRawDataFormat(DataFormat dataFormat);
+
 }

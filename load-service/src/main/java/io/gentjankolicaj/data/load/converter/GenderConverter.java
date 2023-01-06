@@ -1,7 +1,7 @@
 package io.gentjankolicaj.data.load.converter;
 
+import io.gentjankolicaj.data.commons.domain.Gender;
 import io.gentjankolicaj.data.load.common.command.GenderCommand;
-import io.gentjankolicaj.data.load.common.domain.Gender;
 import io.gentjankolicaj.data.load.common.dto.GenderDTO;
 import io.gentjankolicaj.data.load.converter.core.MyConverter;
 import org.springframework.stereotype.Component;

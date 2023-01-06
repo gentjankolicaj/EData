@@ -1,8 +1,6 @@
 package io.gentjankolicaj.data.load.common.command.nasa.power;
 
-import io.gentjankolicaj.data.load.common.command.DataFormatCommand;
 import io.gentjankolicaj.data.load.common.command.PressureUnitCommand;
-import io.gentjankolicaj.data.load.common.command.UserCommand;
 import io.gentjankolicaj.data.load.statistic.core.Attribute;
 import io.gentjankolicaj.data.load.statistic.core.Item;
 import jakarta.validation.constraints.NotNull;
@@ -11,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -22,8 +20,6 @@ public class PowerPressureCommand implements Item {
     @NotNull
     private Long id;
 
-    @NotNull
-    private UserCommand userCommand;
 
     @NotNull
     private Float value;
@@ -32,16 +28,7 @@ public class PowerPressureCommand implements Item {
     private PressureUnitCommand pressureUnitCommand;
 
     @NotNull
-    private Date date;
-
-    @NotNull
-    private String url;
-
-    @NotNull
-    private IdentifierCommand identifierCommand;
-
-    @NotNull
-    private DataFormatCommand rawDataFormatCommand;
+    private LocalDate date;
 
     @Override
     public Attribute getAttribute() {

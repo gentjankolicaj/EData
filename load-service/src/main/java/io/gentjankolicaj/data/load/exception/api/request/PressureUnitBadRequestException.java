@@ -1,19 +1,8 @@
 package io.gentjankolicaj.data.load.exception.api.request;
 
-public class PressureUnitBadRequestException extends RuntimeException {
+import lombok.experimental.StandardException;
 
-    public PressureUnitBadRequestException() {
-    }
+@StandardException
+public final class PressureUnitBadRequestException extends RuntimeException {
 
-    public PressureUnitBadRequestException(String message) {
-        super(message);
-    }
-
-    public PressureUnitBadRequestException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public PressureUnitBadRequestException(Throwable cause) {
-        super(cause);
-    }
 }

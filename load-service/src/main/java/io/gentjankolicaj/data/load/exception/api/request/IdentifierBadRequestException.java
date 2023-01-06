@@ -1,19 +1,8 @@
 package io.gentjankolicaj.data.load.exception.api.request;
 
-public class IdentifierBadRequestException extends RuntimeException {
+import lombok.experimental.StandardException;
 
-    public IdentifierBadRequestException() {
-    }
+@StandardException
+public final class IdentifierBadRequestException extends RuntimeException {
 
-    public IdentifierBadRequestException(String message) {
-        super(message);
-    }
-
-    public IdentifierBadRequestException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public IdentifierBadRequestException(Throwable cause) {
-        super(cause);
-    }
 }

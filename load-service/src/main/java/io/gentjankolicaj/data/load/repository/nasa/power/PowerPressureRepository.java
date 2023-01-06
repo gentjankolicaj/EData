@@ -1,10 +1,9 @@
 package io.gentjankolicaj.data.load.repository.nasa.power;
 
-import io.gentjankolicaj.data.load.common.domain.DataFormat;
-import io.gentjankolicaj.data.load.common.domain.PressureUnit;
-import io.gentjankolicaj.data.load.common.domain.User;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.Identifier;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.PowerPressure;
+import io.gentjankolicaj.data.commons.domain.PressureUnit;
+import io.gentjankolicaj.data.commons.domain.User;
+import io.gentjankolicaj.data.commons.domain.nasa.power.Identifier;
+import io.gentjankolicaj.data.commons.domain.nasa.power.PowerPressure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +24,5 @@ public interface PowerPressureRepository extends CrudRepository<PowerPressure, L
 
     List<PowerPressure> findPowerPressuresByIdentifier(Identifier identifier);
 
-    List<PowerPressure> findPowerPressuresByRawDataFormat(DataFormat dataFormat);
 
 }

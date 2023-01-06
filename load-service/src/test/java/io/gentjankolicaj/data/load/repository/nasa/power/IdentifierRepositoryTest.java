@@ -1,6 +1,6 @@
 package io.gentjankolicaj.data.load.repository.nasa.power;
 
-import io.gentjankolicaj.data.load.common.domain.nasa.power.Identifier;
+import io.gentjankolicaj.data.commons.domain.nasa.power.Identifier;
 import org.apache.commons.collections4.IterableUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;

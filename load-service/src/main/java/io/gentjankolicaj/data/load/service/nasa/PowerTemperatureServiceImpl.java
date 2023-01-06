@@ -1,11 +1,10 @@
 package io.gentjankolicaj.data.load.service.nasa;
 
-import io.gentjankolicaj.data.load.client.nasa_power.NasaClient;
+import io.gentjankolicaj.data.commons.domain.User;
+import io.gentjankolicaj.data.commons.domain.nasa.power.PowerTemperature;
+import io.gentjankolicaj.data.commons.enums.nasa.power.*;
 import io.gentjankolicaj.data.load.common.command.nasa.power.PowerTemperatureCommand;
-import io.gentjankolicaj.data.load.common.domain.User;
-import io.gentjankolicaj.data.load.common.domain.nasa.power.PowerTemperature;
 import io.gentjankolicaj.data.load.common.dto.nasa.power.PowerTemperatureDTO;
-import io.gentjankolicaj.data.load.common.enums.power.*;
 import io.gentjankolicaj.data.load.converter.nasa.power.PowerTemperatureConverter;
 import io.gentjankolicaj.data.load.exception.resource.NullIdException;
 import io.gentjankolicaj.data.load.exception.resource.NullReferenceException;
@@ -26,15 +25,13 @@ public class PowerTemperatureServiceImpl implements PowerTemperatureService {
 
     private final PowerTemperatureRepository powerTemperatureRepository;
     private final PowerTemperatureConverter powerTemperatureConverter;
-    private final NasaClient nasaClient;
     private final UserService userService;
 
 
     @Autowired
-    public PowerTemperatureServiceImpl(PowerTemperatureRepository powerTemperatureRepository, PowerTemperatureConverter powerTemperatureConverter, NasaClient nasaClient, UserService userService) {
+    public PowerTemperatureServiceImpl(PowerTemperatureRepository powerTemperatureRepository, PowerTemperatureConverter powerTemperatureConverter, UserService userService) {
         this.powerTemperatureRepository = powerTemperatureRepository;
         this.powerTemperatureConverter = powerTemperatureConverter;
-        this.nasaClient = nasaClient;
         this.userService = userService;
     }
 
@@ -90,12 +87,9 @@ public class PowerTemperatureServiceImpl implements PowerTemperatureService {
                 return powerTemperatureConverter.sourceToDto(savedPowerTemperature);
             } else {
                 PowerTemperature actual = optional.get();
-                actual.setUser(newPowerTemperature.getUser());
                 actual.setValue(newPowerTemperature.getValue());
                 actual.setTemperatureUnit(newPowerTemperature.getTemperatureUnit());
                 actual.setDate(newPowerTemperature.getDate());
-                actual.setUrl(newPowerTemperature.getUrl());
-                actual.setIdentifier(newPowerTemperature.getIdentifier());
                 actual.setRawDataFormat(newPowerTemperature.getRawDataFormat());
                 return powerTemperatureConverter.sourceToDto(actual);
             }
@@ -114,12 +108,9 @@ public class PowerTemperatureServiceImpl implements PowerTemperatureService {
                 return powerTemperatureConverter.sourceToCommand(savedPowerTemperature);
             } else {
                 PowerTemperature actual = optional.get();
-                actual.setUser(newPowerTemperature.getUser());
                 actual.setValue(newPowerTemperature.getValue());
                 actual.setTemperatureUnit(newPowerTemperature.getTemperatureUnit());
                 actual.setDate(newPowerTemperature.getDate());
-                actual.setUrl(newPowerTemperature.getUrl());
-                actual.setIdentifier(newPowerTemperature.getIdentifier());
                 actual.setRawDataFormat(newPowerTemperature.getRawDataFormat());
                 return powerTemperatureConverter.sourceToCommand(actual);
             }
@@ -186,7 +177,7 @@ public class PowerTemperatureServiceImpl implements PowerTemperatureService {
         User user = userService.getById(userId);
 
         //Retrieve list
-        List<PowerTemperature> retrievedList = nasaClient.retrieveTemperature(identifierEnum, dataParametersEnum, startDate, endDate, userCommunityEnum, tempAverageEnum, outputFormatEnum, lat, lon, bbox);
+        List<PowerTemperature> retrievedList = null;//nasaClient.retrieveTemperature(identifierEnum, dataParametersEnum, startDate, endDate, userCommunityEnum, tempAverageEnum, outputFormatEnum, lat, lon, bbox);
 
         //Saved data to db
         Iterable<PowerTemperature> savedData = saveRetrievedList(retrievedList, user);
@@ -207,7 +198,7 @@ public class PowerTemperatureServiceImpl implements PowerTemperatureService {
         User user = userService.getById(userId);
 
         //Retrieve list
-        List<PowerTemperature> retrievedList = nasaClient.retrieveTemperature(identifierEnum, dataParametersEnum, startDate, endDate, userCommunityEnum, tempAverageEnum, outputFormatEnum, lat, lon, bbox);
+        List<PowerTemperature> retrievedList = null;//nasaClient.retrieveTemperature(identifierEnum, dataParametersEnum, startDate, endDate, userCommunityEnum, tempAverageEnum, outputFormatEnum, lat, lon, bbox);
 
         //Saved data to db
         Iterable<PowerTemperature> savedData = saveRetrievedList(retrievedList, user);
@@ -218,9 +209,6 @@ public class PowerTemperatureServiceImpl implements PowerTemperatureService {
 
 
     private Iterable<PowerTemperature> saveRetrievedList(List<PowerTemperature> retrievedList, User user) {
-        for (PowerTemperature temp : retrievedList) {
-            temp.setUser(user);
-        }
         return powerTemperatureRepository.saveAll(retrievedList);
     }
 
