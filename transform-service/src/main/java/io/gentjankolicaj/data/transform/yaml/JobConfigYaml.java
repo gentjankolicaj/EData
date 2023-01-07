@@ -4,10 +4,12 @@ import io.gentjankolicaj.data.commons.yaml.AbstractJobConfigYaml;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@ToString
 public class JobConfigYaml extends AbstractJobConfigYaml {
     private String name;
     private int sleep;

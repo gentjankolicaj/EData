@@ -8,10 +8,10 @@ httpServer:
       method: POST
 caches:
   - key: nasa-cache
-    size: 10
+    size: 10 #size in megabyte
     duration: 5
   - key: openweather-cache
-    size: 10
+    size: 10  #size in megabyte
     duration: 5
 jobManager:
   threadPoolSize: 2
@@ -30,4 +30,4 @@ redis:
   password: P@ssw0rd
   useSSL: false
   databaseNumber: 1
-  defaultTimeout: 10;
+  defaultTimeout: 10
