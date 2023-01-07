@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class LocalCachePoolTest {
 
     static LocalCachePool localCachePool;
@@ -51,18 +53,18 @@ class LocalCachePoolTest {
         String nasaCacheKey = "nasa-cache";
         localCachePool.initCaches(applicationConfigYaml.getCaches());
 
-        Cache<String, Cacheable> nasaCache = localCachePool.getCache(nasaCacheKey);
+        Cache<Long, List<? extends Cacheable>> nasaCache = localCachePool.getCache(nasaCacheKey);
         String sValue = "Hello World";
         Double dValue = Double.valueOf(3.14);
         Long lValue = Long.valueOf(1);
 
-        nasaCache.put("String", new CacheableString(sValue));
-        nasaCache.put("Long", new CacheableLong(lValue));
-        nasaCache.put("Double", new CacheableDouble(dValue));
+        nasaCache.put(1L, List.of(new CacheableString(sValue)));
+        nasaCache.put(2L, List.of(new CacheableLong(lValue)));
+        nasaCache.put(3L, List.of(new CacheableDouble(dValue)));
 
-        Assertions.assertTrue(nasaCache.get("String").getValue() == sValue);
-        Assertions.assertTrue(nasaCache.get("Double").getValue() == dValue);
-        Assertions.assertTrue(nasaCache.get("Long").getValue() == lValue);
+        Assertions.assertTrue(nasaCache.get(1L).get(1).getValue() == sValue);
+        Assertions.assertTrue(nasaCache.get(2L).get(1).getValue() == lValue);
+        Assertions.assertTrue(nasaCache.get(3L).get(1).getValue() == dValue);
 
         localCachePool.closePool();
     }

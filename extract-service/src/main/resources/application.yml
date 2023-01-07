@@ -12,8 +12,13 @@ jobManager:
         baseUrl: https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py?
         user: anonymous
       externalServer:
-        uri: http://localhost:9000/api/v1/nasa
-        method: post
+        name: transform-server
+        host: http://localhost:9000
+        paths:
+          - path: /api/v1/nasa/pressure
+            method: POST
+          - path: /api/v1/nasa/temperature
+            method: POST
 
     - name: openweather-job
       sleep: 2000
@@ -24,6 +29,11 @@ jobManager:
         baseUrl: https://samples.openweathermap.org/data/2.5/weather?
         user: anonymous
       externalServer:
-        uri: http://localhost:9000/api/v1/openweather
-        method: post
+        name: transform-server
+        host: http://localhost:9000
+        paths:
+          - path: /api/v1/openweather/pressure
+            method: POST
+          - path: /api/v1/openweather/temperature
+            method: POST
 

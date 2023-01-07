@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -14,7 +16,7 @@ public class JobConfigYaml extends AbstractJobConfigYaml {
     private String name;
     private int sleep;
     private int failedAttemptMax;
-    private String cacheKey;
+    private List<String> cacheKeys;
 
 
 }

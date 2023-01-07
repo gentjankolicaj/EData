@@ -13,6 +13,7 @@ import java.util.List;
 @ToString
 public class HttpServerConfigYaml {
     private int port;
+    private SocketConfigYaml socket;
     private List<HttpPathConfigYaml> paths;
 
 }

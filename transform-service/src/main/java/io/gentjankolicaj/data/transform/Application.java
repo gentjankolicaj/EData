@@ -7,7 +7,6 @@ import io.gentjankolicaj.data.transform.http.CustomHttpServer;
 import io.gentjankolicaj.data.transform.job.JobConstants;
 import io.gentjankolicaj.data.transform.job.JobManager;
 import io.gentjankolicaj.data.transform.job.nasa.NasaJob;
-import io.gentjankolicaj.data.transform.job.openweather.OpenWeatherJob;
 import io.gentjankolicaj.data.transform.redis.RedisManager;
 import io.gentjankolicaj.data.transform.yaml.ApplicationConfigYaml;
 import io.gentjankolicaj.data.transform.yaml.JobConfigYaml;
@@ -24,7 +23,7 @@ public class Application {
         ApplicationConfigYaml applicationConfigYaml = getConfigurationYaml();
         LocalCachePool.getInstance().initCaches(applicationConfigYaml.getCaches());
         RedisManager.getInstance().initClient(applicationConfigYaml.getRedis());
-        (new CustomHttpServer(applicationConfigYaml)).start();
+        (new CustomHttpServer(applicationConfigYaml.getHttpServer())).start();
         (new JobManager(applicationConfigYaml)).runJobs(getJobsImpl(applicationConfigYaml));
     }
 
@@ -35,8 +34,7 @@ public class Application {
     static List<Job> getJobsImpl(ApplicationConfigYaml applicationConfigYaml) {
         if (CollectionUtils.isNotEmpty(applicationConfigYaml.getJobManager().getJobs())) {
             List<JobConfigYaml> jobConfigYamls = applicationConfigYaml.getJobManager().getJobs();
-            return List.of(new NasaJob(jobConfigYamls.stream().filter(e -> e.getName().equalsIgnoreCase(JobConstants.NASA_JOB_NAME)).findAny().get()),
-                    new OpenWeatherJob(jobConfigYamls.stream().filter(e -> e.getName().equalsIgnoreCase(JobConstants.OPENWEATHER_JOB_NAME)).findAny().get()));
+            return List.of(new NasaJob(jobConfigYamls.stream().filter(e -> e.getName().equalsIgnoreCase(JobConstants.NASA_JOB_NAME)).findAny().get()));
 
         } else
             return List.of();

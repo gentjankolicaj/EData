@@ -5,10 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExternalServerConfigYaml {
-    private String uri;
-    private String method;
+    private String name;
+    private String host;
+    private List<HttpPathConfigYaml> paths;
 }

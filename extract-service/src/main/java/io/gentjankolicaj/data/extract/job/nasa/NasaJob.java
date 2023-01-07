@@ -7,6 +7,7 @@ import io.gentjankolicaj.data.commons.job.result.SimpleMeta;
 import io.gentjankolicaj.data.commons.util.http.HttpUtils;
 import io.gentjankolicaj.data.extract.enums.ServerType;
 import io.gentjankolicaj.data.extract.yaml.ExternalServerConfigYaml;
+import io.gentjankolicaj.data.extract.yaml.HttpPathConfigYaml;
 import io.gentjankolicaj.data.extract.yaml.JobConfigYaml;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,16 +25,18 @@ public class NasaJob implements Job<NasaJobResult> {
     private NasaRequestWrapper nasaRequestWrapper;
 
     @Override
-    public NasaJobResult call() throws Exception {
+    public NasaJobResult call() {
         boolean flag = true;
         int attempt = 0;
         do {
             try {
                 List<PowerPressure> powerPressures = nasaRequestWrapper.retrievePressureDummy();
                 List<PowerTemperature> powerTemperatures = nasaRequestWrapper.retrieveTemperatureDummy();
-                sentRequest(jobYaml.getExternalServer(), powerPressures, powerTemperatures);
+                sentTemperatureRequest(jobYaml.getExternalServer(), powerTemperatures);
+                sentPressureRequest(jobYaml.getExternalServer(), powerPressures);
                 Thread.sleep(jobYaml.getSleep());
             } catch (Exception e) {
+                Thread.currentThread().interrupt();
                 attempt++;
                 log.error("Error : {} ", e.getMessage(), e);
             }
@@ -44,28 +47,57 @@ public class NasaJob implements Job<NasaJobResult> {
         return NasaJobResult.builder().meta(new SimpleMeta(0)).build();
     }
 
-    void sentRequest(ExternalServerConfigYaml externalServerConfigYaml, Object... args) throws IOException, ParseException {
-        if (externalServerConfigYaml.getUri().contains(ServerType.HTTP.getName())) {
-            switch (externalServerConfigYaml.getMethod()) {
+    void sentTemperatureRequest(ExternalServerConfigYaml externalServerConfigYaml, List<PowerTemperature> list) throws IOException, ParseException {
+        if (externalServerConfigYaml.getHost().contains(ServerType.HTTP.getName())) {
+            HttpPathConfigYaml httpPathConfigYaml = externalServerConfigYaml.getPaths().stream().filter(e -> e.getPath().contains("temperature")).findAny().get();
+            switch (httpPathConfigYaml.getMethod()) {
                 case "POST":
-                    for (Object obj : args)
-                        HttpUtils.post(externalServerConfigYaml.getUri(), obj, String.class);
+                    for (Object obj : list)
+                        HttpUtils.post(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
                     break;
                 case "GET":
-                    for (Object obj : args)
-                        HttpUtils.get(externalServerConfigYaml.getUri(), obj, String.class);
+                    for (Object obj : list)
+                        HttpUtils.get(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
                     break;
                 case "PUT":
-                    for (Object obj : args)
-                        HttpUtils.put(externalServerConfigYaml.getUri(), obj, String.class);
+                    for (Object obj : list)
+                        HttpUtils.put(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
                     break;
                 case "DELETE":
-                    for (Object obj : args)
-                        HttpUtils.delete(externalServerConfigYaml.getUri(), obj, String.class);
+                    for (Object obj : list)
+                        HttpUtils.delete(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
                     break;
                 case "OPTIONS":
-                    for (Object obj : args)
-                        HttpUtils.options(externalServerConfigYaml.getUri(), obj, String.class);
+                    for (Object obj : list)
+                        HttpUtils.options(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
+                    break;
+            }
+        }
+    }
+
+    void sentPressureRequest(ExternalServerConfigYaml externalServerConfigYaml, List<PowerPressure> list) throws IOException, ParseException {
+        if (externalServerConfigYaml.getHost().contains(ServerType.HTTP.getName())) {
+            HttpPathConfigYaml httpPathConfigYaml = externalServerConfigYaml.getPaths().stream().filter(e -> e.getPath().contains("pressure")).findAny().get();
+            switch (httpPathConfigYaml.getMethod()) {
+                case "POST":
+                    for (Object obj : list)
+                        HttpUtils.post(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
+                    break;
+                case "GET":
+                    for (Object obj : list)
+                        HttpUtils.get(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
+                    break;
+                case "PUT":
+                    for (Object obj : list)
+                        HttpUtils.put(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
+                    break;
+                case "DELETE":
+                    for (Object obj : list)
+                        HttpUtils.delete(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
+                    break;
+                case "OPTIONS":
+                    for (Object obj : list)
+                        HttpUtils.options(externalServerConfigYaml.getHost() + httpPathConfigYaml.getPath(), obj, String.class);
                     break;
             }
         }

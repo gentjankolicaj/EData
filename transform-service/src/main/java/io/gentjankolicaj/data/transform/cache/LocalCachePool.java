@@ -22,7 +22,7 @@ public final class LocalCachePool {
 
     private static final LocalCachePool INSTANCE = new LocalCachePool();
     private final CacheManager cacheManager;
-    private Map<String, Cache<String, Cacheable>> cacheMap;
+    private Map<String, Cache<Long, List<? extends Cacheable>>> cacheMap;
 
     private LocalCachePool() {
         this.cacheManager = CacheManagerBuilder.newCacheManagerBuilder().build();
@@ -44,7 +44,7 @@ public final class LocalCachePool {
             for (CacheConfigYaml cacheConfigYaml : cacheConfigYamls) {
                 if (!this.cacheMap.containsKey(cacheConfigYaml.getKey())) {
                     try {
-                        Cache<String, Cacheable> cache = cacheManager.createCache(cacheConfigYaml.getKey(), CacheConfigurationBuilder.newCacheConfigurationBuilder(String.class, Cacheable.class, ResourcePoolsBuilder.heap(cacheConfigYaml.getSize()).build()).build());
+                        Cache<Long, List<? extends Cacheable>> cache = cacheManager.createCache(cacheConfigYaml.getKey(), CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, (Class) List.class, ResourcePoolsBuilder.heap(cacheConfigYaml.getSize()).build()).build());
                         this.cacheMap.put(cacheConfigYaml.getKey(), cache);
                         log.info("Cache '{}' details : {}", cacheConfigYaml.getKey(), cacheConfigYaml);
                     } catch (Exception e) {
@@ -60,7 +60,7 @@ public final class LocalCachePool {
 
     }
 
-    public Cache<String, Cacheable> getCache(String key) {
+    public Cache<Long, List<? extends Cacheable>> getCache(String key) {
         log.info("Getting cache '{}'", key);
         return this.cacheMap.get(key);
     }

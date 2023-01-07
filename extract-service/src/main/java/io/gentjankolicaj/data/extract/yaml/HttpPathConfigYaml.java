@@ -1,4 +1,4 @@
-package io.gentjankolicaj.data.transform.yaml;
+package io.gentjankolicaj.data.extract.yaml;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,5 +12,5 @@ import lombok.ToString;
 public class HttpPathConfigYaml {
     private String path;
     private String method;
-    private String cacheKey;
+
 }
