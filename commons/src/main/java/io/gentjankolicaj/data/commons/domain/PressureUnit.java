@@ -9,13 +9,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "pressureUnit")
-public class PressureUnit {
+public class PressureUnit implements Serializable {
 
     @Id
     @Column(name = "unitCode")

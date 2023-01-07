@@ -18,18 +18,18 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
-public final class LocalCache {
+public final class LocalCachePool {
 
-    private static final LocalCache INSTANCE = new LocalCache();
+    private static final LocalCachePool INSTANCE = new LocalCachePool();
     private final CacheManager cacheManager;
     private Map<String, Cache<String, Cacheable>> cacheMap;
 
-    private LocalCache() {
+    private LocalCachePool() {
         this.cacheManager = CacheManagerBuilder.newCacheManagerBuilder().build();
         this.cacheManager.init();
     }
 
-    public static LocalCache getInstance() {
+    public static LocalCachePool getInstance() {
         return INSTANCE;
     }
 

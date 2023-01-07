@@ -10,10 +10,10 @@ import lombok.ToString;
 @Getter
 @ToString
 public class RedisConfigYml {
-    public int defaultTimeout;
     private String host;
     private int port;
     private String password;
     private boolean useSSL;
     private String databaseNumber;
+    public int defaultTimeout;
 }

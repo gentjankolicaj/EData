@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "nasaPowerPressure")
-public class PowerPressure {
+public class PowerPressure implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

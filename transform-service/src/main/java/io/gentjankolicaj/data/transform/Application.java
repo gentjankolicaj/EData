@@ -2,7 +2,7 @@ package io.gentjankolicaj.data.transform;
 
 import io.gentjankolicaj.data.commons.job.Job;
 import io.gentjankolicaj.data.commons.util.YamlUtils;
-import io.gentjankolicaj.data.transform.cache.LocalCache;
+import io.gentjankolicaj.data.transform.cache.LocalCachePool;
 import io.gentjankolicaj.data.transform.http.CustomHttpServer;
 import io.gentjankolicaj.data.transform.job.JobConstants;
 import io.gentjankolicaj.data.transform.job.JobManager;
@@ -22,7 +22,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) throws Exception {
         ApplicationConfigYaml applicationConfigYaml = getConfigurationYaml();
-        LocalCache.getInstance().initCaches(applicationConfigYaml.getCaches());
+        LocalCachePool.getInstance().initCaches(applicationConfigYaml.getCaches());
         RedisManager.getInstance().initClient(applicationConfigYaml.getRedis());
         (new CustomHttpServer(applicationConfigYaml)).start();
         (new JobManager(applicationConfigYaml)).runJobs(getJobsImpl(applicationConfigYaml));

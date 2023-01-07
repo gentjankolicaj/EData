@@ -10,9 +10,11 @@ import java.util.List;
 @AllArgsConstructor
 public class CustomHttpServer {
     private HttpServerConfigYaml httpServerConfigYaml;
-    private List<CacheConfigYaml> cacheConfigYms;
+    private List<CacheConfigYaml> cacheConfigYamls;
 
     public CustomHttpServer(ApplicationConfigYaml applicationConfigYaml) {
+        this.httpServerConfigYaml = applicationConfigYaml.getHttpServer();
+        this.cacheConfigYamls = applicationConfigYaml.getCaches();
     }
 
     public void start() {

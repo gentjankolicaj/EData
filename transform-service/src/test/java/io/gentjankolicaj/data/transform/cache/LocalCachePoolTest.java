@@ -11,20 +11,20 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class LocalCacheTest {
+class LocalCachePoolTest {
 
-    static LocalCache localCache;
+    static LocalCachePool localCachePool;
 
     @BeforeAll
     static void setup() {
-        localCache = LocalCache.getInstance();
+        localCachePool = LocalCachePool.getInstance();
     }
 
     @Test
     void initCaches() throws Exception {
         ApplicationConfigYaml applicationConfigYaml = Application.getConfigurationYaml();
         Assertions.assertTrue(CollectionUtils.isNotEmpty(applicationConfigYaml.getCaches()));
-        localCache.initCaches(applicationConfigYaml.getCaches());
+        localCachePool.initCaches(applicationConfigYaml.getCaches());
 
     }
 
@@ -32,16 +32,16 @@ class LocalCacheTest {
     void clearCaches() throws Exception {
         ApplicationConfigYaml applicationConfigYaml = Application.getConfigurationYaml();
         Assertions.assertTrue(CollectionUtils.isNotEmpty(applicationConfigYaml.getCaches()));
-        localCache.initCaches(applicationConfigYaml.getCaches());
-        localCache.clearCaches();
+        localCachePool.initCaches(applicationConfigYaml.getCaches());
+        localCachePool.clearCaches();
     }
 
     @Test
     void close() throws Exception {
         ApplicationConfigYaml applicationConfigYaml = Application.getConfigurationYaml();
         Assertions.assertTrue(CollectionUtils.isNotEmpty(applicationConfigYaml.getCaches()));
-        localCache.initCaches(applicationConfigYaml.getCaches());
-        localCache.closePool();
+        localCachePool.initCaches(applicationConfigYaml.getCaches());
+        localCachePool.closePool();
     }
 
     @Test
@@ -49,9 +49,9 @@ class LocalCacheTest {
         ApplicationConfigYaml applicationConfigYaml = Application.getConfigurationYaml();
         Assertions.assertTrue(CollectionUtils.isNotEmpty(applicationConfigYaml.getCaches()));
         String nasaCacheKey = "nasa-cache";
-        localCache.initCaches(applicationConfigYaml.getCaches());
+        localCachePool.initCaches(applicationConfigYaml.getCaches());
 
-        Cache<String, Cacheable> nasaCache = localCache.getCache(nasaCacheKey);
+        Cache<String, Cacheable> nasaCache = localCachePool.getCache(nasaCacheKey);
         String sValue = "Hello World";
         Double dValue = Double.valueOf(3.14);
         Long lValue = Long.valueOf(1);
@@ -64,6 +64,6 @@ class LocalCacheTest {
         Assertions.assertTrue(nasaCache.get("Double").getValue() == dValue);
         Assertions.assertTrue(nasaCache.get("Long").getValue() == lValue);
 
-        localCache.closePool();
+        localCachePool.closePool();
     }
 }

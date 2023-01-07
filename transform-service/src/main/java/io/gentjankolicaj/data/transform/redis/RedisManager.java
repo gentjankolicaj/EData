@@ -3,11 +3,13 @@ package io.gentjankolicaj.data.transform.redis;
 import io.gentjankolicaj.data.commons.exception.YamlException;
 import io.gentjankolicaj.data.transform.yaml.RedisConfigYml;
 import io.lettuce.core.RedisClient;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
+@Slf4j
 public class RedisManager {
 
     private static final RedisManager INSTANCE = new RedisManager();
@@ -30,12 +32,15 @@ public class RedisManager {
             throw new YamlException("Error YAML redis config.");
         if (isNull(redisClient)) {
             this.redisClient = RedisClient.create(urlBuilder().redisConfigYml(redisConfigYml).build());
+            log.info("Redis client created.");
         }
     }
 
-    public void close(RedisConfigYml redisConfigYml) {
+    public void closeClient() {
         if (nonNull(redisClient)) {
             this.redisClient.close();
+            this.redisClient = null;
+            log.info("Redis client closed.");
         }
     }
 
@@ -60,7 +65,7 @@ public class RedisManager {
             sb.append(StringUtils.isNotEmpty(redisConfigYml.getPassword()) ? redisConfigYml.getPassword() : "");
             sb.append(StringUtils.isNotEmpty(redisConfigYml.getHost()) ? redisConfigYml.getHost() : "");
             sb.append(":").append(redisConfigYml.getPort());
-            sb.append("/").append(redisConfigYml.getDatabaseNumber());
+            sb.append("/").append(isNull(redisConfigYml.getDatabaseNumber()) ? "" : redisConfigYml.getDatabaseNumber());
             return sb.toString();
         }
     }
