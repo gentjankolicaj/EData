@@ -15,19 +15,19 @@ import java.util.List;
  * Unit test for simple App.
  */
 @Slf4j
-public class ApplicationTest {
+public class ExtractApplicationTest {
 
 
     @Test
     void getConfiguration() throws IOException {
-        ApplicationConfigYaml applicationYaml = Application.getConfiguration();
-        log.info("Application yaml {}", applicationYaml);
+        ApplicationConfigYaml applicationYaml = ExtractApplication.getConfiguration();
+        log.info("ExtractApplication yaml {}", applicationYaml);
     }
 
     @Test
     void getJobsImpl() throws IOException {
-        ApplicationConfigYaml applicationYaml = Application.getConfiguration();
-        List<Job> jobs = Application.getJobsImpl(applicationYaml.getJobManager().getJobs());
+        ApplicationConfigYaml applicationYaml = ExtractApplication.getConfiguration();
+        List<Job> jobs = ExtractApplication.getJobsImpl(applicationYaml.getJobManager().getJobs());
         Assertions.assertTrue(CollectionUtils.isNotEmpty(jobs));
     }
 }

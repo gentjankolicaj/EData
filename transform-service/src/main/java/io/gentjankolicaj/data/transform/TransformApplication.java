@@ -3,7 +3,7 @@ package io.gentjankolicaj.data.transform;
 import io.gentjankolicaj.data.commons.job.Job;
 import io.gentjankolicaj.data.commons.util.YamlUtils;
 import io.gentjankolicaj.data.transform.cache.LocalCachePool;
-import io.gentjankolicaj.data.transform.http.CustomHttpServer;
+import io.gentjankolicaj.data.transform.http.LocalHttpServer;
 import io.gentjankolicaj.data.transform.job.JobConstants;
 import io.gentjankolicaj.data.transform.job.JobManager;
 import io.gentjankolicaj.data.transform.job.nasa.NasaJob;
@@ -18,12 +18,12 @@ import java.util.List;
 /**
  * Hello world!
  */
-public class Application {
+public class TransformApplication {
     public static void main(String[] args) throws Exception {
         ApplicationConfigYaml applicationConfigYaml = getConfigurationYaml();
         LocalCachePool.getInstance().initCaches(applicationConfigYaml.getCaches());
         RedisManager.getInstance().initClient(applicationConfigYaml.getRedis());
-        (new CustomHttpServer(applicationConfigYaml.getHttpServer())).start();
+        LocalHttpServer.getInstance().start(applicationConfigYaml.getHttpServer());
         (new JobManager(applicationConfigYaml)).runJobs(getJobsImpl(applicationConfigYaml));
     }
 

@@ -1,32 +1,35 @@
 package io.gentjankolicaj.data.transform.cache;
 
 
+import io.gentjankolicaj.data.commons.cache.AbstractCachePool;
+import io.gentjankolicaj.data.commons.cache.Cacheable;
 import io.gentjankolicaj.data.commons.exception.YamlException;
 import io.gentjankolicaj.data.transform.exception.LocalCacheException;
 import io.gentjankolicaj.data.transform.yaml.CacheConfigYaml;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.MapUtils;
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
 import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import static java.util.Objects.isNull;
 
 @Slf4j
-public final class LocalCachePool {
+public final class LocalCachePool extends AbstractCachePool<String, List<Cacheable>> {
 
     private static final LocalCachePool INSTANCE = new LocalCachePool();
     private final CacheManager cacheManager;
-    private Map<String, Cache<Long, List<? extends Cacheable>>> cacheMap;
+    private final List<String> cacheKeys;
 
     private LocalCachePool() {
         this.cacheManager = CacheManagerBuilder.newCacheManagerBuilder().build();
         this.cacheManager.init();
+        this.cacheKeys = new ArrayList<>();
     }
 
     public static LocalCachePool getInstance() {
@@ -37,15 +40,11 @@ public final class LocalCachePool {
         if (CollectionUtils.isEmpty(cacheConfigYamls)) {
             throw new YamlException("Error cache YAML .Yaml empty");
         } else {
-            if (MapUtils.isNotEmpty(this.cacheMap)) {
-                throw new YamlException("Caches are already created.You have to close and re init again");
-            }
-            this.cacheMap = new ConcurrentHashMap<>();
             for (CacheConfigYaml cacheConfigYaml : cacheConfigYamls) {
-                if (!this.cacheMap.containsKey(cacheConfigYaml.getKey())) {
+                if (isNull(this.cacheManager.getCache(cacheConfigYaml.getKey(), String.class, (Class<List>) List.class))) {
                     try {
-                        Cache<Long, List<? extends Cacheable>> cache = cacheManager.createCache(cacheConfigYaml.getKey(), CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, (Class) List.class, ResourcePoolsBuilder.heap(cacheConfigYaml.getSize()).build()).build());
-                        this.cacheMap.put(cacheConfigYaml.getKey(), cache);
+                        cacheManager.createCache(cacheConfigYaml.getKey(), CacheConfigurationBuilder.newCacheConfigurationBuilder(String.class, (Class) List.class, ResourcePoolsBuilder.heap(cacheConfigYaml.getSize()).build()).build());
+                        cacheKeys.add(cacheConfigYaml.getKey());
                         log.info("Cache '{}' details : {}", cacheConfigYaml.getKey(), cacheConfigYaml);
                     } catch (Exception e) {
                         log.error("Failed to create cache '{}' details : {}", cacheConfigYaml.getKey(), cacheConfigYaml, e);
@@ -56,18 +55,19 @@ public final class LocalCachePool {
     }
 
     public void clearCaches() {
-        this.cacheMap.forEach((k, v) -> v.clear());
-
+        for (String key : cacheKeys) {
+            this.cacheManager.removeCache(key);
+        }
     }
 
-    public Cache<Long, List<? extends Cacheable>> getCache(String key) {
+    public Cache<String, List<Cacheable>> getCache(String key) {
         log.info("Getting cache '{}'", key);
-        return this.cacheMap.get(key);
+        return this.cacheManager.getCache(key, String.class, (Class) List.class);
     }
 
     public void closePool() {
-        clearCaches();
-        cacheManager.close();
+        this.clearCaches();
+        this.cacheManager.close();
         log.info("Closed cache manager.");
     }
 }

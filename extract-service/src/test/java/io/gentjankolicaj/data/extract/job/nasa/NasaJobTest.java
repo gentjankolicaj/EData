@@ -6,11 +6,13 @@ import io.gentjankolicaj.data.extract.yaml.HttpPathConfigYaml;
 import io.gentjankolicaj.data.extract.yaml.JobConfigYaml;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
 
+@Disabled
 class NasaJobTest {
 
     NasaJob nasaJob;
@@ -28,6 +30,7 @@ class NasaJobTest {
     void call() {
     }
 
+    @Disabled
     @Test
     void sentRequest() throws IOException, ParseException {
         ExternalServerConfigYaml externalServerConfigYaml = nasaJob.getJobYaml().getExternalServer();

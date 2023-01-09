@@ -1,4 +1,4 @@
-package io.gentjankolicaj.data.transform.cache;
+package io.gentjankolicaj.data.commons.cache;
 
 public interface Cacheable<T> {
     public T getValue();

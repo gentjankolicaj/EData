@@ -19,15 +19,9 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <ehcache.version>3.10.8</ehcache.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <version>${ehcache.version}</version>
-        </dependency>
         <dependency>
             <groupId>io.gentjankolicaj.data</groupId>
             <artifactId>commons</artifactId>
@@ -40,12 +34,4 @@
         </dependency>
     </dependencies>
 
-
-    <repositories>
-        <repository>
-            <id>netbeans</id>
-            <name>NetBeans</name>
-            <url>https://netbeans.apidesign.org/maven2/</url>
-        </repository>
-    </repositories>
 </project>

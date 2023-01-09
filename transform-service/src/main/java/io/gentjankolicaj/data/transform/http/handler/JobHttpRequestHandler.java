@@ -1,12 +1,13 @@
-package io.gentjankolicaj.data.transform.http.request;
+package io.gentjankolicaj.data.transform.http.handler;
 
+import io.gentjankolicaj.data.commons.cache.Cacheable;
 import io.gentjankolicaj.data.commons.domain.nasa.power.PowerPressure;
 import io.gentjankolicaj.data.commons.domain.nasa.power.PowerTemperature;
 import io.gentjankolicaj.data.commons.util.JsonUtils;
-import io.gentjankolicaj.data.transform.cache.Cacheable;
 import io.gentjankolicaj.data.transform.cache.LocalCachePool;
 import io.gentjankolicaj.data.transform.yaml.HttpPathConfigYaml;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.HttpException;
@@ -16,6 +17,7 @@ import org.apache.hc.core5.http.protocol.HttpContext;
 import org.ehcache.Cache;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Objects.isNull;
@@ -24,7 +26,7 @@ import static java.util.Objects.isNull;
 public final class JobHttpRequestHandler implements HttpRequestHandler {
 
     private final HttpPathConfigYaml httpPathConfigYaml;
-    private final Cache<Long, List<? extends Cacheable>> cache;
+    private final Cache<String, List<Cacheable>> cache;
 
     public JobHttpRequestHandler(final HttpPathConfigYaml httpPathConfigYaml) {
         this.httpPathConfigYaml = httpPathConfigYaml;
@@ -38,14 +40,30 @@ public final class JobHttpRequestHandler implements HttpRequestHandler {
         } else {
             try {
                 if (!request.getMethod().equalsIgnoreCase(httpPathConfigYaml.getMethod())) {
-                    log.warn("Http request received & method not impl.");
+                    log.warn("HttpMethod request received  & not impl.");
                 } else {
                     if (request.getUri().getPath().equals("/api/v1/nasa/temperature")) {
                         PowerTemperature powerTemperature = JsonUtils.readAsString(EntityUtils.toString(request.getEntity()), PowerTemperature.class);
-                        log.info("Http request received & cached.{} , {}", request, powerTemperature);
+                        List<Cacheable> list = cache.get("temperature-v1");
+                        if (CollectionUtils.isEmpty(list)) {
+                            List<Cacheable> tmp = new ArrayList<>();
+                            tmp.add(powerTemperature);
+                            cache.put("temperature-v1", list);
+                        } else {
+                            list.add(powerTemperature);
+                        }
+                        log.info("Http request cached.{} , {}", request, powerTemperature);
                     } else if (request.getUri().getPath().equals("/api/v1/nasa/pressure")) {
                         PowerPressure powerPressure = JsonUtils.readAsString(EntityUtils.toString(request.getEntity()), PowerPressure.class);
-                        log.info("Http request received & cached.{} , {}", request, powerPressure);
+                        List<Cacheable> list = cache.get("pressure-v1");
+                        if (CollectionUtils.isEmpty(list)) {
+                            List<Cacheable> tmp = new ArrayList<>();
+                            tmp.add(powerPressure);
+                            cache.put("pressure-v1", list);
+                        } else {
+                            list.add(powerPressure);
+                        }
+                        log.info("Http request cached.{} , {}", request, powerPressure);
                     }
                 }
             } catch (Exception e) {

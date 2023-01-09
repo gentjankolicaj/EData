@@ -14,7 +14,7 @@ import io.gentjankolicaj.data.extract.yaml.JobConfigYaml;
 import java.io.IOException;
 import java.util.List;
 
-public class Application {
+public class ExtractApplication {
     public static void main(String[] args) throws IOException {
         ApplicationConfigYaml applicationYaml = getConfiguration();
         JobManager jobManager = new JobManager(applicationYaml.getJobManager());

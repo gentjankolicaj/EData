@@ -1,6 +1,6 @@
-package io.gentjankolicaj.data.transform.cache.types;
+package io.gentjankolicaj.data.commons.cache.types;
 
-import io.gentjankolicaj.data.transform.cache.AbstractCacheable;
+import io.gentjankolicaj.data.commons.cache.AbstractCacheable;
 
 public class CacheableDouble extends AbstractCacheable<Double> {
     public CacheableDouble(Double value) {

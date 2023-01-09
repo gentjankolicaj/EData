@@ -1,12 +1,12 @@
 package io.gentjankolicaj.data.transform.http;
 
-import io.gentjankolicaj.data.transform.Application;
+import io.gentjankolicaj.data.transform.TransformApplication;
 import io.gentjankolicaj.data.transform.yaml.ApplicationConfigYaml;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CustomHttpServerTest {
+class LocalHttpServerTest {
 
     @BeforeEach
     void setUp() {
@@ -18,7 +18,7 @@ class CustomHttpServerTest {
 
     @Test
     void start() throws Exception {
-        ApplicationConfigYaml applicationConfigYaml = Application.getConfigurationYaml();
-        (new CustomHttpServer(applicationConfigYaml.getHttpServer())).start();
+        ApplicationConfigYaml applicationConfigYaml = TransformApplication.getConfigurationYaml();
+        LocalHttpServer.getInstance().start(applicationConfigYaml.getHttpServer());
     }
 }

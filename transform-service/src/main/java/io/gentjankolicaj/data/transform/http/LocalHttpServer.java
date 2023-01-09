@@ -1,12 +1,12 @@
 package io.gentjankolicaj.data.transform.http;
 
+import io.gentjankolicaj.data.transform.exception.HttpServerException;
+import io.gentjankolicaj.data.transform.http.handler.JobHttpRequestHandler;
+import io.gentjankolicaj.data.transform.http.handler.PingRequestHandler;
 import io.gentjankolicaj.data.transform.http.listener.CustomExceptionListener;
-import io.gentjankolicaj.data.transform.http.request.JobHttpRequestHandler;
-import io.gentjankolicaj.data.transform.http.request.PingRequestHandler;
 import io.gentjankolicaj.data.transform.yaml.HttpPathConfigYaml;
 import io.gentjankolicaj.data.transform.yaml.HttpServerConfigYaml;
 import io.gentjankolicaj.data.transform.yaml.SocketConfigYaml;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.hc.core5.http.impl.bootstrap.HttpServer;
@@ -21,14 +21,26 @@ import java.util.concurrent.TimeUnit;
 
 import static java.util.Objects.isNull;
 
-@AllArgsConstructor
 @Slf4j
-public class CustomHttpServer {
-    private HttpServerConfigYaml httpServerConfigYaml;
+public class LocalHttpServer {
 
+    private static final LocalHttpServer INSTANCE = new LocalHttpServer();
+    private boolean runningServer;
 
-    public void start() {
-        new StarterThread().start();
+    private LocalHttpServer() {
+    }
+
+    public static LocalHttpServer getInstance() {
+        return INSTANCE;
+    }
+
+    public void start(HttpServerConfigYaml httpServerConfigYaml) {
+        if (runningServer) {
+            throw new HttpServerException("Http server is running already with details : " + httpServerConfigYaml);
+        } else {
+            new RunnerThread(httpServerConfigYaml).start();
+            runningServer = true;
+        }
     }
 
     /**
@@ -38,11 +50,14 @@ public class CustomHttpServer {
      * Other alternative is to use join() method and stop main-thread from finishing to execute.
      * </p>
      */
-    class StarterThread extends Thread {
+    private static class RunnerThread extends Thread {
 
-        StarterThread() {
+        private final HttpServerConfigYaml httpServerConfigYaml;
+
+        RunnerThread(HttpServerConfigYaml httpServerConfigYaml) {
             //Set thread to non-daemon to stop jvm from exiting when main-thread finishes execution
             setDaemon(false);
+            this.httpServerConfigYaml = httpServerConfigYaml;
         }
 
         @Override

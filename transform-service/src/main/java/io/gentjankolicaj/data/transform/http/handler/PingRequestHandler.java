@@ -1,4 +1,4 @@
-package io.gentjankolicaj.data.transform.http.request;
+package io.gentjankolicaj.data.transform.http.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hc.core5.http.ClassicHttpRequest;

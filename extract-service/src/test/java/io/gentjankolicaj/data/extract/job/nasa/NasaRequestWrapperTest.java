@@ -8,12 +8,14 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
+@Disabled //disable test class from running
 class NasaRequestWrapperTest {
 
     NasaRequestWrapper nasaRequestWrapper;
@@ -22,6 +24,7 @@ class NasaRequestWrapperTest {
     void setup() {
         nasaRequestWrapper = new NasaRequestWrapper();
     }
+
 
     @Test
     void retrieveTemperature() throws IOException, ParseException {

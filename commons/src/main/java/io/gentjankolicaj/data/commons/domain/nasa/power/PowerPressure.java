@@ -1,20 +1,23 @@
 package io.gentjankolicaj.data.commons.domain.nasa.power;
 
+import io.gentjankolicaj.data.commons.cache.Cacheable;
 import io.gentjankolicaj.data.commons.domain.PressureUnit;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "nasaPowerPressure")
-public class PowerPressure implements Serializable {
+public class PowerPressure implements Serializable, Cacheable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,4 +40,8 @@ public class PowerPressure implements Serializable {
     private String rawDataFormat;
 
 
+    @Override
+    public Class<?> getClazz() {
+        return PowerPressure.class;
+    }
 }

@@ -9,11 +9,11 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
-class ApplicationTest {
+class TransformApplicationTest {
 
     @Test
     void getConfigurationYaml() throws IOException {
-        ApplicationConfigYaml applicationConfigYaml = Application.getConfigurationYaml();
+        ApplicationConfigYaml applicationConfigYaml = TransformApplication.getConfigurationYaml();
         Assertions.assertTrue(nonNull(applicationConfigYaml));
         Assertions.assertTrue(CollectionUtils.isNotEmpty(applicationConfigYaml.getCaches()));
         Assertions.assertTrue(CollectionUtils.isNotEmpty(applicationConfigYaml.getJobManager().getJobs()));
