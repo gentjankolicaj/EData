@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.gentjankolicaj.data</groupId>
-    <artifactId>edata</artifactId>
+    <groupId>io.gentjankolicaj.app.edata</groupId>
+    <artifactId>project</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -16,7 +16,7 @@
         <module>commons</module>
     </modules>
 
-    <name>EData</name>
+    <name>edata</name>
     <description>An simple app for gathering/processing/analysing data about earth from different data providers
     </description>
     <url>https://github.com/gentjankolicaj/EData</url>
@@ -179,6 +179,14 @@
             <artifactId>ehcache</artifactId>
             <version>${ehcache.version}</version>
         </dependency>
+
+        <!-- Mappstruct for dto & command mapping -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.5.3.Final</version>
+        </dependency>
+
 
     </dependencies>
 

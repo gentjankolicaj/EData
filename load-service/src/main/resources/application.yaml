@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: load-service
+  redis:
+    host: localhost
+    username:
+    password:
+    port: 6379
+    database: 1
+  banner:
+    image:
+      location: classpath:banner.txt
+  mvc:
+    favicon:
+      enabled: false
+  thymeleaf:
+    cache: false
