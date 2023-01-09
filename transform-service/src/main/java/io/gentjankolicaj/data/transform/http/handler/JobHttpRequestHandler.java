@@ -5,6 +5,7 @@ import io.gentjankolicaj.data.commons.domain.nasa.power.PowerPressure;
 import io.gentjankolicaj.data.commons.domain.nasa.power.PowerTemperature;
 import io.gentjankolicaj.data.commons.util.JsonUtils;
 import io.gentjankolicaj.data.transform.cache.LocalCachePool;
+import io.gentjankolicaj.data.transform.http.HttpCacheConstants;
 import io.gentjankolicaj.data.transform.yaml.HttpPathConfigYaml;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
@@ -44,22 +45,22 @@ public final class JobHttpRequestHandler implements HttpRequestHandler {
                 } else {
                     if (request.getUri().getPath().equals("/api/v1/nasa/temperature")) {
                         PowerTemperature powerTemperature = JsonUtils.readAsString(EntityUtils.toString(request.getEntity()), PowerTemperature.class);
-                        List<Cacheable> list = cache.get("temperature-v1");
+                        List<Cacheable> list = cache.get(HttpCacheConstants.NASA_TEMPERATURE_V1_KEY);
                         if (CollectionUtils.isEmpty(list)) {
                             List<Cacheable> tmp = new ArrayList<>();
                             tmp.add(powerTemperature);
-                            cache.put("temperature-v1", list);
+                            cache.put(HttpCacheConstants.NASA_TEMPERATURE_V1_KEY, list);
                         } else {
                             list.add(powerTemperature);
                         }
                         log.info("Http request cached.{} , {}", request, powerTemperature);
                     } else if (request.getUri().getPath().equals("/api/v1/nasa/pressure")) {
                         PowerPressure powerPressure = JsonUtils.readAsString(EntityUtils.toString(request.getEntity()), PowerPressure.class);
-                        List<Cacheable> list = cache.get("pressure-v1");
+                        List<Cacheable> list = cache.get(HttpCacheConstants.NASA_PRESSURE_V1_KEY);
                         if (CollectionUtils.isEmpty(list)) {
                             List<Cacheable> tmp = new ArrayList<>();
                             tmp.add(powerPressure);
-                            cache.put("pressure-v1", list);
+                            cache.put(HttpCacheConstants.NASA_PRESSURE_V1_KEY, list);
                         } else {
                             list.add(powerPressure);
                         }

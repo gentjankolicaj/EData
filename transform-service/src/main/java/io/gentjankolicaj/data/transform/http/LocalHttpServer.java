@@ -1,6 +1,7 @@
 package io.gentjankolicaj.data.transform.http;
 
 import io.gentjankolicaj.data.transform.exception.HttpServerException;
+import io.gentjankolicaj.data.transform.http.handler.CacheHttpRequestHandler;
 import io.gentjankolicaj.data.transform.http.handler.JobHttpRequestHandler;
 import io.gentjankolicaj.data.transform.http.handler.PingRequestHandler;
 import io.gentjankolicaj.data.transform.http.listener.CustomExceptionListener;
@@ -110,7 +111,9 @@ public class LocalHttpServer {
                     .setSocketConfig(getSocketConfig())
                     .setSslContext(getSSLContext())
                     .setExceptionListener(new CustomExceptionListener())
-                    .register("/ping", new PingRequestHandler());
+                    .register("/ping", new PingRequestHandler())
+                    .register("/cache", new CacheHttpRequestHandler());
+
             if (CollectionUtils.isNotEmpty(httpServerConfigYaml.getPaths())) {
                 for (HttpPathConfigYaml httpPathConfigYaml : httpServerConfigYaml.getPaths()) {
                     serverBootstrap.register(httpPathConfigYaml.getPath(), new JobHttpRequestHandler(httpPathConfigYaml));

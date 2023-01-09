@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
+import java.util.List;
 
 public class PowerTemperatureDaoImpl implements PowerTemperatureDao {
     private final StatefulRedisConnection<Long, PowerTemperature> connection;
@@ -27,6 +28,11 @@ public class PowerTemperatureDaoImpl implements PowerTemperatureDao {
     @Override
     public Long save(Long key, PowerTemperature value) throws RedisDaoException {
         return connection.sync().sadd(key, value);
+    }
+
+    @Override
+    public Long saveAll(Long key, List<PowerTemperature> values) throws RedisDaoException {
+        return connection.sync().sadd(key, values.toArray(new PowerTemperature[values.size()]));
     }
 
     @Override

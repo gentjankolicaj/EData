@@ -11,8 +11,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
+import java.util.List;
 
-public class PowerPressureDaoImpl implements PowerPressureDao {
+public final class PowerPressureDaoImpl implements PowerPressureDao {
     private final StatefulRedisConnection<Long, PowerPressure> connection;
 
     public PowerPressureDaoImpl() {
@@ -30,13 +31,17 @@ public class PowerPressureDaoImpl implements PowerPressureDao {
     }
 
     @Override
+    public Long saveAll(Long key, List<PowerPressure> values) throws RedisDaoException {
+        return connection.sync().sadd(key, values.toArray(new PowerPressure[values.size()]));
+    }
+
+    @Override
     public Long delete(Long key) throws RedisDaoException {
         return connection.sync().del(key);
     }
 
 
     static class PowerPressureCodec implements RedisCodec<Long, PowerPressure> {
-
 
         @Override
         public Long decodeKey(ByteBuffer byteBuffer) {
