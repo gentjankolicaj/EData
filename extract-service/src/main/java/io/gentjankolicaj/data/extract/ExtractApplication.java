@@ -10,19 +10,23 @@ import io.gentjankolicaj.data.extract.job.openweather.OpenWeatherJob;
 import io.gentjankolicaj.data.extract.job.openweather.OpenWeatherRequestWrapper;
 import io.gentjankolicaj.data.extract.yaml.ApplicationConfigYaml;
 import io.gentjankolicaj.data.extract.yaml.JobConfigYaml;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 public class ExtractApplication {
     public static void main(String[] args) throws IOException {
-        ApplicationConfigYaml applicationYaml = getConfiguration();
+        ApplicationConfigYaml applicationYaml = getConfigurationYaml();
         JobManager jobManager = new JobManager(applicationYaml.getJobManager());
         jobManager.runJobs(getJobsImpl(applicationYaml.getJobManager().getJobs()));
     }
 
-    static ApplicationConfigYaml getConfiguration() throws IOException {
-        return YamlUtils.read("application.yml", ApplicationConfigYaml.class);
+    static ApplicationConfigYaml getConfigurationYaml() throws IOException {
+        ApplicationConfigYaml applicationConfigYaml = YamlUtils.read("application.yml", ApplicationConfigYaml.class);
+        log.info("{}", applicationConfigYaml);
+        return applicationConfigYaml;
     }
 
     static List<Job> getJobsImpl(List<JobConfigYaml> jobConfigYamls) {

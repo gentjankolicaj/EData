@@ -61,7 +61,7 @@ public final class LocalCachePool extends AbstractCachePool<String, List<Cacheab
     }
 
     public Cache<String, List<Cacheable>> getCache(String key) {
-        log.info("Getting cache '{}'", key);
+        log.info("Read cache key '{}'", key);
         return this.cacheManager.getCache(key, String.class, (Class) List.class);
     }
 

@@ -34,7 +34,7 @@ jobManager:
 redis:
   host: localhost
   port: 6379
-  password: P@ssw0rd
+  password:
   useSSL: false
   databaseNumber: 1
   defaultTimeout: 10000

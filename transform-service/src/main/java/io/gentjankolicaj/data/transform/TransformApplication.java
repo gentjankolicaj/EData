@@ -10,6 +10,7 @@ import io.gentjankolicaj.data.transform.job.nasa.NasaJob;
 import io.gentjankolicaj.data.transform.redis.RedisManager;
 import io.gentjankolicaj.data.transform.yaml.ApplicationConfigYaml;
 import io.gentjankolicaj.data.transform.yaml.JobConfigYaml;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Hello world!
  */
+@Slf4j
 public class TransformApplication {
     public static void main(String[] args) throws Exception {
         ApplicationConfigYaml applicationConfigYaml = getConfigurationYaml();
@@ -28,7 +30,9 @@ public class TransformApplication {
     }
 
     public static ApplicationConfigYaml getConfigurationYaml() throws IOException {
-        return YamlUtils.read("application.yml", ApplicationConfigYaml.class);
+        ApplicationConfigYaml applicationConfigYaml = YamlUtils.read("application.yml", ApplicationConfigYaml.class);
+        log.info("{}", applicationConfigYaml);
+        return applicationConfigYaml;
     }
 
     static List<Job> getJobsImpl(ApplicationConfigYaml applicationConfigYaml) {

@@ -54,7 +54,6 @@ public class NasaJob implements Job<NasaJobResult<SimpleMeta, Object>> {
                         }
                     }
                 }
-
                 Thread.sleep(jobConfigYaml.getSleep());
                 log.error("Job '{}' run {} millis.", jobConfigYaml.getName(), System.currentTimeMillis() - startTime);
             } catch (Exception e) {
