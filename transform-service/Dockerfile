@@ -5,7 +5,7 @@ FROM amazoncorretto:11
 WORKDIR /app
 
 #Copy from compile diretory to image work dir
-COPY ./target/transform-service-1.0-SNAPSHOT.jar /app/app.jar
+COPY ./target/transform-service-1.0-SNAPSHOT-jar-with-dependencies.jar /app/app.jar
 
 #Expose port
 EXPOSE 9000

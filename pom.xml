@@ -218,6 +218,16 @@
         <!-- Spring boot dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <exclusions> <!-- Excluded because of  https://stackoverflow.com/questions/59900637/error-testengine-with-id-junit-vintage-failed-to-discover-tests-with-spring -->
                 <exclusion>
