@@ -1,33 +1,30 @@
 package io.gentjankolicaj.app.edata.commons.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
-import java.util.List;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "country")
-public class Country {
+@RedisHash("country")
+public class Country implements Serializable {
 
-    @Id
-    @Column(name = "countryName")
-    private String countryName;
+ @Id
+ @Column(name = "countryName")
+ private String countryName;
 
-    @Column(name = "phonePrefix")
-    private String phonePrefix;
+ @Column(name = "phonePrefix")
+ private String phonePrefix;
 
-    @Column(name = "isoCodes")
-    private String isoCodes;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "country_languages", joinColumns = @JoinColumn(name = "countryName"), inverseJoinColumns = @JoinColumn(name = "language"))
-    private List<Language> languages;
+ @Column(name = "isoCodes")
+ private String isoCodes;
 
 }
