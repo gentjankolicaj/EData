@@ -1,5 +1,12 @@
 version: '3'
 
+networks:
+  edata_net:
+
+volumes:
+  cache:
+    driver: local
+
 services:
   redis-service:
     image: redis:7.0.7
@@ -9,6 +16,30 @@ services:
     command: redis-server --loglevel warning
     volumes:
       - cache:/data
-volumes:
-  cache:
-    driver: local
+    networks:
+      - edata_net
+
+  transform-service:
+    image: kolicajgentjan/edata-transformservice:1.0
+    ports:
+      - '9000:9000'
+    depends_on:
+      - redis-service
+    networks:
+      - edata_net
+
+  load-service:
+    image: kolicajgentjan/edata-loadservice:1.0
+    ports:
+      - '8080:8080'
+    depends_on:
+      - redis-service
+    networks:
+      - edata_net
+
+  extract-service:
+    image: kolicajgentjan/edata-extractservice:1.0
+    depends_on:
+      - transform-service
+    networks:
+      - edata_net
