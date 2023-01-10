@@ -339,6 +339,12 @@
 
     <repositories>
         <repository>
+            <id>project-repo</id>
+            <name>project-repo</name>
+            <url>file:${user.home}/.m2/repository/</url>
+        </repository>
+
+        <repository>
             <id>netbeans</id>
             <name>NetBeans</name>
             <url>https://netbeans.apidesign.org/maven2/</url>
