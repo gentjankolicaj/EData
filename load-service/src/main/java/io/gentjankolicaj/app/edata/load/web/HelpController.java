@@ -1,4 +1,4 @@
-package io.gentjankolicaj.app.edata.load.controller;
+package io.gentjankolicaj.app.edata.load.web;
 
 import io.gentjankolicaj.app.edata.load.service.InformationService;
 import org.springframework.beans.factory.annotation.Autowired;

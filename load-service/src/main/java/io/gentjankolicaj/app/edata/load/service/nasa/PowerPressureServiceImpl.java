@@ -22,8 +22,6 @@ import java.util.Optional;
 @Service
 public class PowerPressureServiceImpl implements PowerPressureService {
 
-    //todo: implementing not implemented methods from datalayer
-
     private final PowerPressureRepository powerPressureRepository;
     private final PowerPressureMapper powerPressureMapper;
 

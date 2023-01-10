@@ -1,4 +1,4 @@
-package io.gentjankolicaj.app.edata.load.controller;
+package io.gentjankolicaj.app.edata.load.web;
 
 
 import io.gentjankolicaj.app.edata.load.command.CountryCmd;
@@ -36,14 +36,14 @@ public class SignController {
     public String showSignIn(Model model) {
         UserCmd userCmd = new UserCmd();
         model.addAttribute("user", userCmd);
-        return "core/signIn";
+        return "core/signin";
     }
 
     @RequestMapping("/")
     public String showSign1(Model model) {
         UserCmd userCmd = new UserCmd();
         model.addAttribute("user", userCmd);
-        return "core/signIn";
+        return "core/signin";
     }
 
 
@@ -55,7 +55,7 @@ public class SignController {
         UserCmd userCmdFound = userService.getByEmailAndPasswordCommand(typedEmail, typedPassword);
 
         if (isNull(userCmdFound)) {
-            return "redirect:/signIn/";
+            return "redirect:/signin/";
         } else {
             model.addAttribute("authentificatedUser", userCmdFound);
             return "redirect:/user/";    // e ridrejton kerkesen tek ajo uri,ne kete rast kjo uri eshte e mapuar ne userController.

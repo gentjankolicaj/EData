@@ -1,4 +1,4 @@
-package io.gentjankolicaj.app.edata.load.controller.nasa;
+package io.gentjankolicaj.app.edata.load.web.nasa;
 
 import io.gentjankolicaj.app.edata.load.service.InformationService;
 import io.gentjankolicaj.app.edata.load.service.nasa.PowerPressureService;

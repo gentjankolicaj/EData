@@ -21,8 +21,6 @@ import java.util.Optional;
 @Service
 public class PowerTemperatureServiceImpl implements PowerTemperatureService {
 
-    //todo: implementing not implemented methods from datalayer
-
     private final PowerTemperatureRepository powerTemperatureRepository;
     private final PowerTemperatureMapper powerTemperatureMapper;
     private final UserService userService;
