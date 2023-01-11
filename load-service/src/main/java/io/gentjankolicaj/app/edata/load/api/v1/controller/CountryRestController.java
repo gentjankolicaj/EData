@@ -35,7 +35,7 @@ public class CountryRestController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("{countryName}")
     public CountryDTO getCountryById(@PathVariable("countryName") String countryName) {
-            return countryService.getByIdDTO(countryName);
+        return countryService.getByIdDTO(countryName);
     }
 
 

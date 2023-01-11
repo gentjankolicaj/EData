@@ -2,7 +2,7 @@ package io.gentjankolicaj.app.edata.commons.yaml;
 
 public abstract class AbstractApplicationConfigYaml<T extends AbstractJobManagerConfigYaml> {
 
-   public abstract String getName();
+    public abstract String getName();
 
-   public abstract T getJobManager();
+    public abstract T getJobManager();
 }

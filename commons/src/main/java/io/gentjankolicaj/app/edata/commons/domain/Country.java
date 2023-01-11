@@ -17,14 +17,14 @@ import java.io.Serializable;
 @RedisHash("country")
 public class Country implements Serializable {
 
- @Id
- @Column(name = "countryName")
- private String countryName;
+    @Id
+    @Column(name = "countryName")
+    private String countryName;
 
- @Column(name = "phonePrefix")
- private String phonePrefix;
+    @Column(name = "phonePrefix")
+    private String phonePrefix;
 
- @Column(name = "isoCodes")
- private String isoCodes;
+    @Column(name = "isoCodes")
+    private String isoCodes;
 
 }

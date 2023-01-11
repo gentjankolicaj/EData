@@ -1,6 +1,7 @@
 package io.gentjankolicaj.app.edata.load.repository;
 
 import org.junit.jupiter.api.Test;
+
 public class CountryRepositoryTest {
 
     @Test
