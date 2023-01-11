@@ -11,4 +11,4 @@ COPY ./target/transform-service-1.0-SNAPSHOT-jar-with-dependencies.jar /app/app.
 EXPOSE 9000
 
 #Execute command
-CMD ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]

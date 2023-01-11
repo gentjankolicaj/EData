@@ -1,7 +1,8 @@
-version: '3'
+version: '2'
 
 networks:
   edata_net:
+    driver: bridge
 
 volumes:
   cache:
@@ -20,6 +21,9 @@ services:
       - edata_net
 
   transform-service:
+    build:
+      context: transform-service
+      dockerfile: Dockerfile
     image: kolicajgentjan/edata-transformservice:1.0
     ports:
       - '9000:9000'
@@ -29,6 +33,9 @@ services:
       - edata_net
 
   load-service:
+    build:
+      context: load-service
+      dockerfile: Dockerfile
     image: kolicajgentjan/edata-loadservice:1.0
     ports:
       - '8080:8080'
@@ -38,6 +45,9 @@ services:
       - edata_net
 
   extract-service:
+    build:
+      context: extract-service
+      dockerfile: Dockerfile
     image: kolicajgentjan/edata-extractservice:1.0
     depends_on:
       - transform-service
