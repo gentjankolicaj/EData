@@ -5,7 +5,7 @@ jobManager:
   jobs:
     - name: nasa-job
       sleep: 2000
-      failedAttemptMax: 5
+      failedAttemptMax: 50
       apiProvider:
         name: NASA
         apiKey: none
@@ -13,7 +13,7 @@ jobManager:
         user: anonymous
       externalServer:
         name: transform-server
-        host: http://localhost:9000
+        host: http://transform-service:9000 # replace from localhost to service name from docker-compose.yml
         paths:
           - path: /api/v1/nasa/pressure
             method: POST
@@ -22,7 +22,7 @@ jobManager:
 
     - name: openweather-job
       sleep: 2000
-      failedAttemptMax: 5
+      failedAttemptMax: 50
       apiProvider:
         name: OPEN_WEATHER_MAP
         apiKey: b6907d289e10d714a6e88b30761fae22
@@ -30,7 +30,7 @@ jobManager:
         user: anonymous
       externalServer:
         name: transform-server
-        host: http://localhost:9000
+        host: http://transform-service:9000 # replace from localhost to service name from docker-compose.yml
         paths:
           - path: /api/v1/openweather/pressure
             method: POST

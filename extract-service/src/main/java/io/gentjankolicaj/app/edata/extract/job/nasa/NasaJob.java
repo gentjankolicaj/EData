@@ -30,13 +30,13 @@ public class NasaJob implements Job<NasaJobResult> {
         int attempt = 0;
         do {
             try {
+                sentPingRequest(jobYaml.getExternalServer());
+                Thread.sleep(jobYaml.getSleep());
                 List<PowerPressure> powerPressures = nasaRequestWrapper.retrievePressureDummy();
                 List<PowerTemperature> powerTemperatures = nasaRequestWrapper.retrieveTemperatureDummy();
                 sentTemperatureRequest(jobYaml.getExternalServer(), powerTemperatures);
                 sentPressureRequest(jobYaml.getExternalServer(), powerPressures);
-                Thread.sleep(jobYaml.getSleep());
             } catch (Exception e) {
-                Thread.currentThread().interrupt();
                 attempt++;
                 log.error("Error : {} ", e.getMessage(), e);
             }
@@ -101,6 +101,10 @@ public class NasaJob implements Job<NasaJobResult> {
                     break;
             }
         }
+    }
+
+    void sentPingRequest(ExternalServerConfigYaml externalServerConfigYaml) throws IOException, ParseException {
+        HttpUtils.get(externalServerConfigYaml.getHost() + "/ping", null, String.class);
     }
 
 

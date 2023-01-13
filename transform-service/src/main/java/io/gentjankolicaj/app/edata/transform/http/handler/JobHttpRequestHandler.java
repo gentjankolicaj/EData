@@ -36,8 +36,9 @@ public final class JobHttpRequestHandler implements HttpRequestHandler {
 
     @Override
     public void handle(ClassicHttpRequest request, ClassicHttpResponse response, HttpContext context) throws HttpException, IOException {
+        log.info("Http request received {}", request);
         if (isNull(cache)) {
-            log.info("Http request received & not cached.{}", request);
+            log.info("Http request not cached.{}", request);
         } else {
             try {
                 if (!request.getMethod().equalsIgnoreCase(httpPathConfigYaml.getMethod())) {

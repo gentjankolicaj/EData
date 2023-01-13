@@ -32,7 +32,7 @@ jobManager:
         - nasa-cache-pressure
 
 redis:
-  host: localhost
+  host: redis-service # replace from localhost to service name from docker-compose.yml
   port: 6379
   password:
   useSSL: false

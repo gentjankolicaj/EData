@@ -216,7 +216,11 @@ public class HttpUtils {
             public T handleResponse(ClassicHttpResponse classicHttpResponse) throws HttpException, IOException {
                 String content = EntityUtils.toString(classicHttpResponse.getEntity(), Charset.defaultCharset());
                 log.info("Http response body {}", content);
-                return JsonUtils.readAsString(content, clazz);
+                if (clazz.getName().equals(String.class.getName())) {
+                    return (T) content;
+                } else {
+                    return JsonUtils.readAsString(content, clazz);
+                }
             }
         };
     }

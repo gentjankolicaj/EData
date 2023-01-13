@@ -2,7 +2,7 @@ spring:
   application:
     name: load-service
   redis:
-    host: localhost
+    host: redis-service # replace from localhost to service name from docker-compose.yml
     username:
     password:
     port: 6379
